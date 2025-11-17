@@ -9,29 +9,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateKbjuTotal() {
     let total = [0, 0, 0, 0];
+    let totalPrice = 0;
 
     document.querySelectorAll('.dish').forEach(dish => {
       const qty = parseInt(dish.querySelector('select.qty')?.value) || 0;
       const kbjuStr = dish.querySelector('.kbju')?.dataset.kbju;
+      const price = parseInt(dish.querySelector('.price')?.dataset.price) || 0;
       if (!kbjuStr || qty === 0) return;
       const kbju = parseKbju(kbjuStr);
       for (let i = 0; i < 4; i++) {
         total[i] += kbju[i] * qty;
       }
+      totalPrice += price * qty;
     });
 
     const kcalEl = document.getElementById('total-kcal');
-const proteinEl = document.getElementById('total-protein');
-const fatEl = document.getElementById('total-fat');
-const carbsEl = document.getElementById('total-carbs');
-const barEl = document.getElementById('total-kbju-bar');
+    const proteinEl = document.getElementById('total-protein');
+    const fatEl = document.getElementById('total-fat');
+    const carbsEl = document.getElementById('total-carbs');
+    const barEl = document.getElementById('total-kbju-bar');
 
-if (kcalEl) kcalEl.textContent = total[0];
-if (proteinEl) proteinEl.textContent = total[1];
-if (fatEl) fatEl.textContent = total[2];
-if (carbsEl) carbsEl.textContent = total[3];
-if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/${total[2]}/${total[3]}`;
-}
+    if (kcalEl) kcalEl.textContent = total[0];
+    if (proteinEl) proteinEl.textContent = total[1];
+    if (fatEl) fatEl.textContent = total[2];
+    if (carbsEl) carbsEl.textContent = total[3];
+
+    if (barEl) {
+      barEl.textContent = `ИТОГО: ${totalPrice}₫ — К/Б/Ж/У: ${total[0]}/${total[1]}/${total[2]}/${total[3]}`;
+    }
+  }
+
   // Инициализация селекторов
   document.querySelectorAll('select.qty').forEach(select => {
     if (select.options.length === 0) {
