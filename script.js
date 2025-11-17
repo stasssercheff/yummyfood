@@ -2,36 +2,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById("orderForm");
   const popup = document.getElementById("popup");
   const popupMessage = document.getElementById("popup-message");
+  const totalBar = document.getElementById("total-kbju-bar");
 
-  function parseKbju(str) {
-    return str.split('/').map(Number); // К/Б/Ж/У → [ккал, белки, жиры, углеводы]
-  }
-
-  function updateKbjuTotal() {
-    let total = [0, 0, 0, 0];
+  // Функция подсчёта итогов
+  function updateTotals() {
+    let totalKbju = [0, 0, 0, 0];
+    let totalPrice = 0;
 
     document.querySelectorAll('.dish').forEach(dish => {
       const qty = parseInt(dish.querySelector('select.qty')?.value) || 0;
+      const price = parseInt(dish.querySelector('.price')?.dataset.price) || 0;
       const kbjuStr = dish.querySelector('.kbju')?.dataset.kbju;
       if (!kbjuStr || qty === 0) return;
-      const kbju = parseKbju(kbjuStr);
+
+      const kbju = kbjuStr.split('/').map(Number);
       for (let i = 0; i < 4; i++) {
-        total[i] += kbju[i] * qty;
+        totalKbju[i] += kbju[i] * qty;
       }
+      totalPrice += price * qty;
     });
 
-    const kcalEl = document.getElementById('total-kcal');
-const proteinEl = document.getElementById('total-protein');
-const fatEl = document.getElementById('total-fat');
-const carbsEl = document.getElementById('total-carbs');
-const barEl = document.getElementById('total-kbju-bar');
+    totalBar.textContent = `ИТОГО: ${totalPrice.toLocaleString()}₫ — К/Б/Ж/У: ${totalKbju.join('/')}`;
+  }
 
-if (kcalEl) kcalEl.textContent = total[0];
-if (proteinEl) proteinEl.textContent = total[1];
-if (fatEl) fatEl.textContent = total[2];
-if (carbsEl) carbsEl.textContent = total[3];
-if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/${total[2]}/${total[3]}`;
-}
   // Инициализация селекторов
   document.querySelectorAll('select.qty').forEach(select => {
     if (select.options.length === 0) {
@@ -42,14 +35,14 @@ if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/
         select.appendChild(option);
       }
     }
-    select.addEventListener('change', updateKbjuTotal);
+    select.addEventListener('change', updateTotals);
   });
 
-  updateKbjuTotal();
+  updateTotals();
 
   let popupShown = false;
 
-  form.addEventListener("submit", async function (e) {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const name = form.name.value.trim();
@@ -58,27 +51,27 @@ if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/
     const comment = form.comment.value.trim();
 
     if (!name || !contactMethod || !contactHandle) {
-      alert("Пожалуйста, заполните все контактные поля");
+      alert("Заполните все контактные поля");
       return;
     }
 
     const orderItems = [];
-    const kbjuTotal = [0, 0, 0, 0];
+    let kbjuTotal = [0, 0, 0, 0];
+    let totalPrice = 0;
 
-    const dishes = form.querySelectorAll(".dish");
-    dishes.forEach((dish) => {
-      const qty = parseInt(dish.querySelector("select.qty").value);
-      if (qty > 0) {
-        const title = dish.querySelector(".dish-name").textContent.trim();
-        const kbjuString = dish.querySelector(".kbju").dataset.kbju;
-        const [k, b, j, u] = kbjuString.split("/").map(Number);
-        orderItems.push(`${title} — ${qty} порц.`);
+    document.querySelectorAll('.dish').forEach(dish => {
+      const qty = parseInt(dish.querySelector('select.qty')?.value) || 0;
+      const price = parseInt(dish.querySelector('.price')?.dataset.price) || 0;
+      const kbjuStr = dish.querySelector('.kbju')?.dataset.kbju;
+      if (!kbjuStr || qty === 0) return;
 
-        kbjuTotal[0] += k * qty;
-        kbjuTotal[1] += b * qty;
-        kbjuTotal[2] += j * qty;
-        kbjuTotal[3] += u * qty;
-      }
+      const [k,b,j,u] = kbjuStr.split('/').map(Number);
+      orderItems.push(`${dish.querySelector('.dish-name').textContent.trim()} — ${qty} порц.`);
+      kbjuTotal[0] += k * qty;
+      kbjuTotal[1] += b * qty;
+      kbjuTotal[2] += j * qty;
+      kbjuTotal[3] += u * qty;
+      totalPrice += price * qty;
     });
 
     if (orderItems.length === 0) {
@@ -92,28 +85,28 @@ if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/
 Комментарий: ${comment}
 
 Заказ:
-${orderItems.map((x, i) => `${i + 1}. ${x}`).join("\n")}
+${orderItems.map((x,i)=>`${i+1}. ${x}`).join("\n")}
 
-К/Б/Ж/У: ${kbjuTotal.join(" / ")}
+ИТОГО: ${totalPrice.toLocaleString()}₫ — К/Б/Ж/У: ${kbjuTotal.join('/')}
     `;
 
     const orderHTML = `
-      <ol style="margin: 0; padding-left: 18px;text-align: left;">
+      <ol style="margin:0; padding-left:18px; text-align:left;">
         ${orderItems.map(x => `<li>${x}</li>`).join("")}
       </ol>
       <br>
-      <b>К/Б/Ж/У:</b> ${kbjuTotal.join(" / ")}
+      <b>ИТОГО:</b> ${totalPrice.toLocaleString()}₫ — К/Б/Ж/У: ${kbjuTotal.join("/")}
     `;
 
-    // Показываем попап до отправки
+    // Попап
     if (!popupShown) {
       popupMessage.innerHTML = `
-        <div style="font-family:Arial;font-size:16px;">
+        <div style="font-family:Arial;font-size:12px;">
           <div><b>${name}</b>!</div>
           <div style="margin-top:6px;">Ваша заявка отправлена!</div>
           <div style="margin:14px 0 6px;">Ваш заказ:</div>
           ${orderHTML}
-          <div style="margin-top:16px;">В ближайшее время с вами свяжутся.<br>Благодарим, что выбрали YUMMY!</div>
+          <div style="margin-top:16px;">С вами скоро свяжутся. Благодарим за выбор YUMMY!</div>
         </div>
       `;
       popup.classList.remove("hidden");
@@ -124,7 +117,7 @@ ${orderItems.map((x, i) => `${i + 1}. ${x}`).join("\n")}
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
           access_key: "14d92358-9b7a-4e16-b2a7-35e9ed71de43",
           subject: "Новый заказ Yummy",
@@ -133,38 +126,33 @@ ${orderItems.map((x, i) => `${i + 1}. ${x}`).join("\n")}
           reply_to: contactHandle,
           name: name
         })
-      }).then(r => r.json());
-
-      if (!res.success) {
-        alert("Ошибка отправки. Проверьте форму.");
-        return;
-      } else {
-        form.reset();
-        updateKbjuTotal();
-      }
-    } catch (err) {
-      alert("Ошибка отправки (email): " + err.message);
-      return;
+      });
+      const data = await res.json();
+      if (!data.success) alert("Ошибка отправки формы. Проверьте данные.");
+    } catch(err) {
+      alert("Ошибка отправки на Web3Forms: " + err.message);
     }
 
     // Отправка в Telegram
     try {
       await fetch("https://api.telegram.org/bot8472899454:AAGiebKRLt6VMei4toaiW11bR2tIACuSFeo/sendMessage", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {"Content-Type":"application/json"},
         body: JSON.stringify({
           chat_id: 7408180116,
           text: emailBody
         })
       });
-    } catch (err) {
+    } catch(err) {
       console.error("Ошибка отправки в Telegram: ", err.message);
     }
+
+    form.reset();
+    updateTotals();
   });
 
-  // Закрытие попапа
-  window.closePopup = function () {
-    document.getElementById("popup").classList.add("hidden");
+  window.closePopup = function() {
+    popup.classList.add("hidden");
     popupShown = false;
   };
 });
