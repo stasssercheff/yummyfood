@@ -8,30 +8,41 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateKbjuTotal() {
-    let total = [0, 0, 0, 0];
+    let total = [0, 0, 0, 0]; // К/Б/Ж/У
+    let totalPrice = 0;
 
     document.querySelectorAll('.dish').forEach(dish => {
       const qty = parseInt(dish.querySelector('select.qty')?.value) || 0;
       const kbjuStr = dish.querySelector('.kbju')?.dataset.kbju;
+      const price = parseInt(dish.querySelector('.price')?.dataset.price) || 0;
       if (!kbjuStr || qty === 0) return;
+
       const kbju = parseKbju(kbjuStr);
       for (let i = 0; i < 4; i++) {
         total[i] += kbju[i] * qty;
       }
+      totalPrice += price * qty;
     });
 
-    const kcalEl = document.getElementById('total-kcal');
-const proteinEl = document.getElementById('total-protein');
-const fatEl = document.getElementById('total-fat');
-const carbsEl = document.getElementById('total-carbs');
-const barEl = document.getElementById('total-kbju-bar');
+    const barEl = document.getElementById('total-kbju-bar');
+    if (barEl) {
+      barEl.innerHTML = `
+        <div>💰 ИТОГО: <b>${totalPrice.toLocaleString()}₫</b></div>
+        <div>🍽 К/Б/Ж/У: ${total[0]}/${total[1]}/${total[2]}/${total[3]}</div>
+      `;
+    }
 
-if (kcalEl) kcalEl.textContent = total[0];
-if (proteinEl) proteinEl.textContent = total[1];
-if (fatEl) fatEl.textContent = total[2];
-if (carbsEl) carbsEl.textContent = total[3];
-if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/${total[2]}/${total[3]}`;
-}
+    const kcalEl = document.getElementById('total-kcal');
+    const proteinEl = document.getElementById('total-protein');
+    const fatEl = document.getElementById('total-fat');
+    const carbsEl = document.getElementById('total-carbs');
+
+    if (kcalEl) kcalEl.textContent = total[0];
+    if (proteinEl) proteinEl.textContent = total[1];
+    if (fatEl) fatEl.textContent = total[2];
+    if (carbsEl) carbsEl.textContent = total[3];
+  }
+
   // Инициализация селекторов
   document.querySelectorAll('select.qty').forEach(select => {
     if (select.options.length === 0) {
@@ -64,20 +75,24 @@ if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/
 
     const orderItems = [];
     const kbjuTotal = [0, 0, 0, 0];
+    let totalPrice = 0;
 
     const dishes = form.querySelectorAll(".dish");
-    dishes.forEach((dish) => {
-      const qty = parseInt(dish.querySelector("select.qty").value);
+    dishes.forEach(dish => {
+      const qty = parseInt(dish.querySelector("select.qty")?.value) || 0;
       if (qty > 0) {
         const title = dish.querySelector(".dish-name").textContent.trim();
         const kbjuString = dish.querySelector(".kbju").dataset.kbju;
+        const price = parseInt(dish.querySelector(".price")?.dataset.price) || 0;
         const [k, b, j, u] = kbjuString.split("/").map(Number);
+
         orderItems.push(`${title} — ${qty} порц.`);
 
         kbjuTotal[0] += k * qty;
         kbjuTotal[1] += b * qty;
         kbjuTotal[2] += j * qty;
         kbjuTotal[3] += u * qty;
+        totalPrice += price * qty;
       }
     });
 
@@ -95,6 +110,7 @@ if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/
 ${orderItems.map((x, i) => `${i + 1}. ${x}`).join("\n")}
 
 К/Б/Ж/У: ${kbjuTotal.join(" / ")}
+ИТОГО: ${totalPrice}₫
     `;
 
     const orderHTML = `
@@ -102,10 +118,10 @@ ${orderItems.map((x, i) => `${i + 1}. ${x}`).join("\n")}
         ${orderItems.map(x => `<li>${x}</li>`).join("")}
       </ol>
       <br>
-      <b>К/Б/Ж/У:</b> ${kbjuTotal.join(" / ")}
+      <b>К/Б/Ж/У:</b> ${kbjuTotal.join(" / ")}<br>
+      <b>ИТОГО:</b> ${totalPrice.toLocaleString()}₫
     `;
 
-    // Показываем попап до отправки
     if (!popupShown) {
       popupMessage.innerHTML = `
         <div style="font-family:Arial;font-size:16px;">
@@ -164,7 +180,7 @@ ${orderItems.map((x, i) => `${i + 1}. ${x}`).join("\n")}
 
   // Закрытие попапа
   window.closePopup = function () {
-    document.getElementById("popup").classList.add("hidden");
+    popup.classList.add("hidden");
     popupShown = false;
   };
 });
