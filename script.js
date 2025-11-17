@@ -20,18 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    const kcalEl = document.getElementById('total-kcal');
-const proteinEl = document.getElementById('total-protein');
-const fatEl = document.getElementById('total-fat');
-const carbsEl = document.getElementById('total-carbs');
-const barEl = document.getElementById('total-kbju-bar');
+    const barEl = document.getElementById('total-kbju-bar');
+    if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/${total[2]}/${total[3]}`;
+  }
 
-if (kcalEl) kcalEl.textContent = total[0];
-if (proteinEl) proteinEl.textContent = total[1];
-if (fatEl) fatEl.textContent = total[2];
-if (carbsEl) carbsEl.textContent = total[3];
-if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/${total[2]}/${total[3]}`;
-}
   // Инициализация селекторов
   document.querySelectorAll('select.qty').forEach(select => {
     if (select.options.length === 0) {
@@ -64,6 +56,7 @@ if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/
 
     const orderItems = [];
     const kbjuTotal = [0, 0, 0, 0];
+    let totalPrice = 0;
 
     const dishes = form.querySelectorAll(".dish");
     dishes.forEach((dish) => {
@@ -72,12 +65,15 @@ if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/
         const title = dish.querySelector(".dish-name").textContent.trim();
         const kbjuString = dish.querySelector(".kbju").dataset.kbju;
         const [k, b, j, u] = kbjuString.split("/").map(Number);
+        const price = parseFloat(dish.querySelector(".price").dataset.price) || 0;
+
         orderItems.push(`${title} — ${qty} порц.`);
 
         kbjuTotal[0] += k * qty;
         kbjuTotal[1] += b * qty;
         kbjuTotal[2] += j * qty;
         kbjuTotal[3] += u * qty;
+        totalPrice += price * qty;
       }
     });
 
@@ -85,6 +81,8 @@ if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/
       alert("Выберите хотя бы одно блюдо.");
       return;
     }
+
+    const formattedPrice = totalPrice.toLocaleString('ru-RU') + "₫";
 
     const emailBody = `
 Новый заказ от ${name}
@@ -95,6 +93,7 @@ if (barEl) barEl.textContent = `ИТОГО К/Б/Ж/У: ${total[0]}/${total[1]}/
 ${orderItems.map((x, i) => `${i + 1}. ${x}`).join("\n")}
 
 К/Б/Ж/У: ${kbjuTotal.join(" / ")}
+Итого: ${formattedPrice}
     `;
 
     const orderHTML = `
@@ -102,7 +101,8 @@ ${orderItems.map((x, i) => `${i + 1}. ${x}`).join("\n")}
         ${orderItems.map(x => `<li>${x}</li>`).join("")}
       </ol>
       <br>
-      <b>К/Б/Ж/У:</b> ${kbjuTotal.join(" / ")}
+      <b>К/Б/Ж/У:</b> ${kbjuTotal.join(" / ")}<br>
+      <b>ИТОГО:</b> ${formattedPrice}
     `;
 
     // Показываем попап до отправки
