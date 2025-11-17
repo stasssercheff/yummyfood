@@ -226,3 +226,10 @@ section,
   border-radius: 0 !important;
   box-shadow: none !important;
 }
+.dish .price {
+  font-size: 13px;
+  line-height: 1.2;
+  color: #666;
+  margin-top: 2px;
+}
+
