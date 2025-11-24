@@ -1,0 +1,222 @@
+{
+  "name": {
+    "ru": "Имя",
+    "en": "Name"
+  },
+  "contactMethodLabel": {
+    "ru": "Выберите социальную сеть",
+    "en": "Select social network"
+  },
+  "selectOption": {
+    "ru": "Выберите",
+    "en": "Select"
+  },
+  "contactHandlePlaceholder": {
+    "ru": "Ник или номер",
+    "en": "Nickname or number"
+  },
+  "comment": {
+    "ru": "Комментарий",
+    "en": "Comment"
+  },
+  "submit": {
+    "ru": "Отправить заявку",
+    "en": "Submit order"
+  },
+  "close": {
+    "ru": "Закрыть",
+    "en": "Close"
+  },
+  "total": {
+    "ru": "ИТОГО",
+    "en": "TOTAL"
+  },
+  "breakfast": {
+    "ru": "Завтрак",
+    "en": "Breakfast"
+  },
+  "soup": {
+    "ru": "Суп",
+    "en": "Soup"
+  },
+  "mainCourse": {
+    "ru": "Основное блюдо",
+    "en": "Main course"
+  },
+  "sideSauce": {
+    "ru": "Гарнир / соус",
+    "en": "Side / Sauce"
+  },
+  "crepesChickenVeg": {
+    "ru": "Блины с курицей и овощами",
+    "en": "Crepes with chicken and vegetables"
+  },
+  "crepesChickenCream": {
+    "ru": "Блины с курицей в сливках",
+    "en": "Crepes with chicken in cream"
+  },
+  "crepesYogurtHoney": {
+    "ru": "Блины с йогуртом и медом",
+    "en": "Crepes with yogurt and honey"
+  },
+  "crepesCheeseHam": {
+    "ru": "Блины с сыром и ветчиной",
+    "en": "Crepes with cheese and ham"
+  },
+  "zucchiniPancakes": {
+    "ru": "Драники из цукини с йогуртом",
+    "en": "Zucchini pancakes with yogurt"
+  },
+  "potatoPancakes": {
+    "ru": "Драники из картофеля с йогуртом",
+    "en": "Potato pancakes with yogurt"
+  },
+  "yogurtGranola": {
+    "ru": "Йогурт с гранолой и тыквенными семечками",
+    "en": "Yogurt with granola and pumpkin seeds"
+  },
+  "omeletBroccoli": {
+    "ru": "Омлет с брокколи",
+    "en": "Omelet with broccoli"
+  },
+  "omeletSunDriedTomatoes": {
+    "ru": "Омлет с вялеными томатами",
+    "en": "Omelet with sun-dried tomatoes"
+  },
+  "pancakesMapleYogurt": {
+    "ru": "Панкейки с кленовым сиропом и йогуртом",
+    "en": "Pancakes with maple syrup and yogurt"
+  },
+  "cheesecakesYogurt": {
+    "ru": "Сырники с йогуртом",
+    "en": "Cheesecakes with yogurt"
+  },
+  "creamBroccoli": {
+    "ru": "Крем-суп из брокколи",
+    "en": "Broccoli cream soup"
+  },
+  "creamCauliflower": {
+    "ru": "Крем-суп из цветной капусты",
+    "en": "Cauliflower cream soup"
+  },
+  "creamChicken": {
+    "ru": "Крем-суп куриный",
+    "en": "Chicken cream soup"
+  },
+  "creamVeg": {
+    "ru": "Крем-суп овощной",
+    "en": "Vegetable cream soup"
+  },
+  "creamPumpkin": {
+    "ru": "Крем-суп тыквенный",
+    "en": "Pumpkin cream soup"
+  },
+  "creamLentil": {
+    "ru": "Крем-суп чечевичный",
+    "en": "Lentil cream soup"
+  },
+  "tomYam": {
+    "ru": "Том Ям с креветками и рисом",
+    "en": "Tom Yum with shrimp and rice"
+  },
+  "beefStroganoff": {
+    "ru": "Бефстроганов с пюре",
+    "en": "Beef Stroganoff with mashed potatoes"
+  },
+  "buckwheatBeefVeg": {
+    "ru": "Греча с овощами и говядиной",
+    "en": "Buckwheat with vegetables and beef"
+  },
+  "julienneMashed": {
+    "ru": "Жульен с пюре",
+    "en": "Julienne with mashed potatoes"
+  },
+  "troutCutletsBeans": {
+    "ru": "Котлеты из форели с фасолью",
+    "en": "Trout cutlets with beans"
+  },
+  "chickenCutletsPepper": {
+    "ru": "Котлеты куриные с перцем",
+    "en": "Chicken cutlets with pepper"
+  },
+  "shrimpZucchiniRice": {
+    "ru": "Креветки с цукини и рисом",
+    "en": "Shrimp with zucchini and rice"
+  },
+  "chickenBreastMashed": {
+    "ru": "Куриная грудка с картофельным пюре",
+    "en": "Chicken breast with mashed potatoes"
+  },
+  "pastaCarbonara": {
+    "ru": "Паста карбонара",
+    "en": "Pasta Carbonara"
+  },
+  "pastaShrimpPesto": {
+    "ru": "Паста с креветками в сливочном соусе песто",
+    "en": "Pasta with shrimp in creamy pesto sauce"
+  },
+  "pastaChickenPesto": {
+    "ru": "Паста с курицей в сливочном соусе песто",
+    "en": "Pasta with chicken in creamy pesto sauce"
+  },
+  "pastaDuck": {
+    "ru": "Паста с уткой",
+    "en": "Pasta with duck"
+  },
+  "liverMashed": {
+    "ru": "Печень в сметанном соусе  с пюре",
+    "en": "Liver in sour cream sauce with mashed potatoes"
+  },
+  "porkBBQMashed": {
+    "ru": "Свинина в барбекю с пюре",
+    "en": "Pork BBQ with mashed potatoes"
+  },
+  "porkSweetSour": {
+    "ru": "Свинина в кисло-сладком соусе с овощами",
+    "en": "Pork in sweet and sour sauce with vegetables"
+  },
+  "seaBassCauliflower": {
+    "ru": "Сибас с пюре из цветной капусты",
+    "en": "Sea bass with cauliflower puree"
+  },
+  "troutSteakBroccoli": {
+    "ru": "Стейк из форели с брокколи и соусом",
+    "en": "Trout steak with broccoli and sauce"
+  },
+  "filetMignonSteak": {
+    "ru": "Стейк филе миньон с пюре и соусом",
+    "en": "Filet mignon steak with mashed potatoes and sauce"
+  },
+  "bulgur": {
+    "ru": "Булгур",
+    "en": "Bulgur"
+  },
+  "bakedEggplantSauce": {
+    "ru": "Запеченный баклажан с соусом",
+    "en": "Baked eggplant with sauce"
+  },
+  "bakedZucchiniSauce": {
+    "ru": "Запеченный цукини с соусом",
+    "en": "Baked zucchini with sauce"
+  },
+  "cauliflowerPuree": {
+    "ru": "Пюре из цветной капусты",
+    "en": "Cauliflower puree"
+  },
+  "potatoPuree": {
+    "ru": "Пюре картофельное",
+    "en": "Potato puree"
+  },
+  "yogurt": {
+    "ru": "Йогурт",
+    "en": "Yogurt"
+  },
+  "garlicSauce": {
+    "ru": "Соус чесночный",
+    "en": "Garlic sauce"
+  },
+  "kbju": {
+    "ru": "К/Б/Ж/У",
+    "en": "P/F/C/F"
+  }
+}
