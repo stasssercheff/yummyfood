@@ -1,227 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+  <title>Yummy — заказ еды</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <img src="logo.PNG" alt="Yummy logo" class="logo" />
 
-  {
-  "gramm": {
-    "ru": "гр.", 
-    "en": "g" 
-},
-  "name": {
-    "ru": "Имя",
-    "en": "Name"
-  },
-  "contactMethodLabel": {
-    "ru": "Выберите социальную сеть",
-    "en": "Select social network"
-  },
-  "selectOption": {
-    "ru": "Выберите",
-    "en": "Select"
-  },
-  "contactHandlePlaceholder": {
-    "ru": "Ник или номер",
-    "en": "Nickname or number"
-  },
-  "comment": {
-    "ru": "Комментарий",
-    "en": "Comment"
-  },
-  "submit": {
-    "ru": "Отправить заявку",
-    "en": "Submit order"
-  },
-  "close": {
-    "ru": "Закрыть",
-    "en": "Close"
-  },
-  "total": {
-    "ru": "ИТОГО",
-    "en": "TOTAL"
-  },
-  "breakfast": {
-    "ru": "Завтрак",
-    "en": "Breakfast"
-  },
-  "soup": {
-    "ru": "Суп",
-    "en": "Soup"
-  },
-  "mainCourse": {
-    "ru": "Основное блюдо",
-    "en": "Main course"
-  },
-  "sideSauce": {
-    "ru": "Гарнир / соус",
-    "en": "Side / Sauce"
-  },
-  "crepesChickenVeg": {
-    "ru": "Блины с курицей и овощами",
-    "en": "Crepes with chicken and vegetables"
-  },
-  "crepesChickenCream": {
-    "ru": "Блины с курицей в сливках",
-    "en": "Crepes with chicken in cream"
-  },
-  "crepesYogurtHoney": {
-    "ru": "Блины с йогуртом и медом",
-    "en": "Crepes with yogurt and honey"
-  },
-  "crepesCheeseHam": {
-    "ru": "Блины с сыром и ветчиной",
-    "en": "Crepes with cheese and ham"
-  },
-  "zucchiniPancakes": {
-    "ru": "Драники из цукини с йогуртом",
-    "en": "Zucchini pancakes with yogurt"
-  },
-  "potatoPancakes": {
-    "ru": "Драники из картофеля с йогуртом",
-    "en": "Potato pancakes with yogurt"
-  },
-  "yogurtGranola": {
-    "ru": "Йогурт с гранолой и тыквенными семечками",
-    "en": "Yogurt with granola and pumpkin seeds"
-  },
-  "omeletBroccoli": {
-    "ru": "Омлет с брокколи",
-    "en": "Omelet with broccoli"
-  },
-  "omeletSunDriedTomatoes": {
-    "ru": "Омлет с вялеными томатами",
-    "en": "Omelet with sun-dried tomatoes"
-  },
-  "pancakesMapleYogurt": {
-    "ru": "Панкейки с кленовым сиропом и йогуртом",
-    "en": "Pancakes with maple syrup and yogurt"
-  },
-  "cheesecakesYogurt": {
-    "ru": "Сырники с йогуртом",
-    "en": "Cheesecakes with yogurt"
-  },
-  "creamBroccoli": {
-    "ru": "Крем-суп из брокколи",
-    "en": "Broccoli cream soup"
-  },
-  "creamCauliflower": {
-    "ru": "Крем-суп из цветной капусты",
-    "en": "Cauliflower cream soup"
-  },
-  "creamChicken": {
-    "ru": "Крем-суп куриный",
-    "en": "Chicken cream soup"
-  },
-  "creamVeg": {
-    "ru": "Крем-суп овощной",
-    "en": "Vegetable cream soup"
-  },
-  "creamPumpkin": {
-    "ru": "Крем-суп тыквенный",
-    "en": "Pumpkin cream soup"
-  },
-  "creamLentil": {
-    "ru": "Крем-суп чечевичный",
-    "en": "Lentil cream soup"
-  },
-  "tomYam": {
-    "ru": "Том Ям с креветками и рисом",
-    "en": "Tom Yum with shrimp and rice"
-  },
-  "beefStroganoff": {
-    "ru": "Бефстроганов с пюре",
-    "en": "Beef Stroganoff with mashed potatoes"
-  },
-  "buckwheatBeefVeg": {
-    "ru": "Греча с овощами и говядиной",
-    "en": "Buckwheat with vegetables and beef"
-  },
-  "julienneMashed": {
-    "ru": "Жульен с пюре",
-    "en": "Julienne with mashed potatoes"
-  },
-  "troutCutletsBeans": {
-    "ru": "Котлеты из форели с фасолью",
-    "en": "Trout cutlets with beans"
-  },
-  "chickenCutletsPepper": {
-    "ru": "Котлеты куриные с перцем",
-    "en": "Chicken cutlets with pepper"
-  },
-  "shrimpZucchiniRice": {
-    "ru": "Креветки с цукини и рисом",
-    "en": "Shrimp with zucchini and rice"
-  },
-  "chickenBreastMashed": {
-    "ru": "Куриная грудка с картофельным пюре",
-    "en": "Chicken breast with mashed potatoes"
-  },
-  "pastaCarbonara": {
-    "ru": "Паста карбонара",
-    "en": "Pasta Carbonara"
-  },
-  "pastaShrimpPesto": {
-    "ru": "Паста с креветками в сливочном соусе песто",
-    "en": "Pasta with shrimp in creamy pesto sauce"
-  },
-  "pastaChickenPesto": {
-    "ru": "Паста с курицей в сливочном соусе песто",
-    "en": "Pasta with chicken in creamy pesto sauce"
-  },
-  "pastaDuck": {
-    "ru": "Паста с уткой",
-    "en": "Pasta with duck"
-  },
-  "liverMashed": {
-    "ru": "Печень в сметанном соусе  с пюре",
-    "en": "Liver in sour cream sauce with mashed potatoes"
-  },
-  "porkBBQMashed": {
-    "ru": "Свинина в барбекю с пюре",
-    "en": "Pork BBQ with mashed potatoes"
-  },
-  "porkSweetSour": {
-    "ru": "Свинина в кисло-сладком соусе с овощами",
-    "en": "Pork in sweet and sour sauce with vegetables"
-  },
-  "seaBassCauliflower": {
-    "ru": "Сибас с пюре из цветной капусты",
-    "en": "Sea bass with cauliflower puree"
-  },
-  "troutSteakBroccoli": {
-    "ru": "Стейк из форели с брокколи и соусом",
-    "en": "Trout steak with broccoli and sauce"
-  },
-  "filetMignonSteak": {
-    "ru": "Стейк филе миньон с пюре и соусом",
-    "en": "Filet mignon steak with mashed potatoes and sauce"
-  },
-  "bulgur": {
-    "ru": "Булгур",
-    "en": "Bulgur"
-  },
-  "bakedEggplantSauce": {
-    "ru": "Запеченный баклажан с соусом",
-    "en": "Baked eggplant with sauce"
-  },
-  "bakedZucchiniSauce": {
-    "ru": "Запеченный цукини с соусом",
-    "en": "Baked zucchini with sauce"
-  },
-  "cauliflowerPuree": {
-    "ru": "Пюре из цветной капусты",
-    "en": "Cauliflower puree"
-  },
-  "potatoPuree": {
-    "ru": "Пюре картофельное",
-    "en": "Potato puree"
-  },
-  "yogurt": {
-    "ru": "Йогурт",
-    "en": "Yogurt"
-  },
-  "garlicSauce": {
-    "ru": "Соус чесночный",
-    "en": "Garlic sauce"
-  },
-  "kbju": {
-    "ru": "К/Б/Ж/У",
-    "en": "P/F/C/F"
-  }
-}
+    <!-- Кнопки смены языка -->
+    <div class="lang-switch">
+      <button id="btn-ru">RU</button>
+      <button id="btn-en">EN</button>
+    </div>
+
+    <form id="orderForm">
+      <!-- имя -->
+      <div class="input-block">
+        <label for="name" data-i18n="name">Имя</label>
+        <input id="name" name="name" required data-i18n-placeholder="name" placeholder="Имя"/>
+      </div>
+
+      <!-- соцсеть + ник -->
+      <div class="input-block">
+        <label for="contactMethod" data-i18n="contactMethodLabel">Выберите социальную сеть</label>
+        <select id="contactMethod" name="contactMethod" required>
+          <option value="" disabled selected hidden data-i18n="selectOption">Выберите</option>
+          <option value="Telegram">Telegram</option>
+          <option value="WhatsApp">WhatsApp</option>
+          <option value="Zalo">Zalo</option>
+        </select>
+        <input id="contactHandle" name="contactHandle"
+               required data-i18n-placeholder="contactHandlePlaceholder" placeholder="Ник или номер" />
+      </div>
+
+      <div class="menu-wrapper">
+        <!-- ===== ЗАВТРАК ===== -->
+        <div class="menu-section">
+          <div class="section-title" data-i18n="breakfast">Завтрак</div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="crepesChickenVeg">Блины с курицей и овощами</div>
+            <div class="kbju" data-kbju="811/23/82/25">К/Б/Ж/У: 811/23/82/25</div>
+            <div class="price" data-price="100000">270 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Блины с курицей и овощами" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="crepesChickenCream">Блины с курицей в сливках</div>
+            <div class="kbju" data-kbju="484/21/81/23">К/Б/Ж/У: 484/21/81/23</div>
+            <div class="price" data-price="100000">270 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Блины с курицей в сливках" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="crepesYogurtHoney">Блины с йогуртом и медом</div>
+            <div class="kbju" data-kbju="582/20/26/69">К/Б/Ж/У: 582/20/26/69</div>
+            <div class="price" data-price="100000">330 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Блины с йогуртом и медом" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="crepesCheeseHam">Блины с сыром и ветчиной</div>
+            <div class="kbju" data-kbju="517/36/35/16">К/Б/Ж/У: 517/36/35/16</div>
+            <div class="price" data-price="120000">270 <span data-i18n-gramm="gramm">гр.</span> 120 000₫</div>
+            <select name="Блины с сыром и ветчиной" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="zucchiniPancakes">Драники из цукини с йогуртом</div>
+            <div class="kbju" data-kbju="451/17/24/42">К/Б/Ж/У: 451/17/24/42</div>
+            <div class="price" data-price="100000">250 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Драники из цукини с йогуртом" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="potatoPancakes">Драники из картофеля с йогуртом</div>
+            <div class="kbju" data-kbju="464/18/25/43">К/Б/Ж/У: 464/18/25/43</div>
+            <div class="price" data-price="100000">250 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Драники из картофеля с йогуртом" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="yogurtGranola">Йогурт с гранолой и тыквенными семечками</div>
+            <div class="kbju" data-kbju="424/15/15/62">К/Б/Ж/У: 424/15/15/62</div>
+            <div class="price" data-price="120000">210 <span data-i18n-gramm="gramm">гр.</span> 120 000₫</div>
+            <select name="Йогурт с гранолой и тыквенными семечками" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="omeletBroccoli">Омлет с брокколи</div>
+            <div class="kbju" data-kbju="428/2/44/5">К/Б/Ж/У: 428/2/44/5</div>
+            <div class="price" data-price="100000">135 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Омлет с брокколи" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="omeletSunDriedTomatoes">Омлет с вялеными томатами</div>
+            <div class="kbju" data-kbju="1097/10/89/68">К/Б/Ж/У: 1097/10/89/68</div>
+            <div class="price" data-price="100000">135 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Омлет с вялеными томатами" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="pancakesMapleYogurt">Панкейки с кленовым сиропом и йогуртом</div>
+            <div class="kbju" data-kbju="818/17/32/117">К/Б/Ж/У: 818/17/32/117</div>
+            <div class="price" data-price="120000">310 <span data-i18n-gramm="gramm">гр.</span> 120 000₫</div>
+            <select name="Панкейки с кленовым сиропом и йогуртом" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="cheesecakesYogurt">Сырники с йогуртом</div>
+            <div class="kbju" data-kbju="382/24/18/32">К/Б/Ж/У: 382/24/18/32</div>
+            <div class="price" data-price="120000">200 <span data-i18n-gramm="gramm">гр.</span> 120 000₫</div>
+            <select name="Сырники с йогуртом" class="qty"></select>
+          </div>
+        </div>
+
+        <!-- ===== СУП ===== -->
+        <div class="menu-section">
+          <div class="section-title" data-i18n="soup">Суп</div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="creamBroccoli">Крем-суп из брокколи</div>
+            <div class="kbju" data-kbju="59/4/1/13">К/Б/Ж/У: 59/4/1/13</div>
+            <div class="price" data-price="100000">300 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Крем-суп из брокколи" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="creamCauliflower">Крем-суп из цветной капусты</div>
+            <div class="kbju" data-kbju="49/3/0/10">К/Б/Ж/У: 49/3/0/10</div>
+            <div class="price" data-price="100000">300 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Крем-суп из цветной капусты" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="creamChicken">Крем-суп куриный</div>
+            <div class="kbju" data-kbju="122/19/1/11">К/Б/Ж/У: 122/19/1/11</div>
+            <div class="price" data-price="100000">300 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Крем-суп куриный" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="creamVeg">Крем-суп овощной</div>
+            <div class="kbju" data-kbju="59/2/0/13">К/Б/Ж/У: 59/2/0/13</div>
+            <div class="price" data-price="100000">300 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Крем-суп овощной" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="creamPumpkin">Крем-суп тыквенный</div>
+            <div class="kbju" data-kbju="247/3/15/24">К/Б/Ж/У: 247/3/15/24</div>
+            <div class="price" data-price="100000">300 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Крем-суп тыквенный" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="creamLentil">Крем-суп чечевичный</div>
+            <div class="kbju" data-kbju="207/7/10/23">К/Б/Ж/У: 207/7/10/23</div>
+            <div class="price" data-price="100000">300 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Крем-суп чечевичный" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="tomYam">Том Ям с креветками и рисом</div>
+            <div class="kbju" data-kbju="365/17.1/19.4/28.5">К/Б/Ж/У: 365/17.1/19.4/28.5</div>
+            <div class="price" data-price="150000">450 <span data-i18n-gramm="gramm">гр.</span> 150 000₫</div>
+            <select name="Том Ям с креветками и рисом" class="qty"></select>
+          </div>
+        </div>
+
+        <!-- Остальные секции аналогично -->
+      </div>
+
+      <div id="nutrition-summary" style="display: none;"></div>
+
+      <div class="input-block">
+        <label for="comment" data-i18n="comment">Комментарий</label>
+        <textarea id="comment" name="comment" rows="3" data-i18n-placeholder="comment" placeholder="Комментарий"></textarea>
+      </div>
+
+      <button type="submit" data-i18n="submit">Отправить заявку</button>
+    </form>
+    
+  </div>
+
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <p id="popup-message"></p>
+      <button onclick="closePopup()" data-i18n="close">Закрыть</button>
+    </div>
+  </div>
+
+  <div id="total-kbju-bar">ИТОГО: 0₫ — К/Б/Ж/У: 0/0/0/0</div>
+
+  <script src="script.js"></script>
+  <script src="i18n.js"></script>
+</body>
+</html>
