@@ -173,6 +173,7 @@ button:hover {
 }
 
 /* Верхняя плашка с суммой КБЖУ */
+/* ===== Нижняя фиксированная панель ===== */
 #total-kbju-bar {
   position: fixed;
   bottom: 0;
@@ -180,14 +181,48 @@ button:hover {
   right: 0;
   background: #fff;
   border-top: 1px solid #ccc;
-  padding: 6px 10px;
-  font-size: 16px;
-  font-weight: 500;
+  padding: 10px 14px;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;  /* Две строки */
+  gap: 8px;                /* Расстояние между кнопками и КБЖУ */
+}
+
+
+/* ===== 1-я строка — кнопки связи ===== */
+.contact-switch {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.contact-switch a {
+  flex: 1;
   text-align: center;
-  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.04);
-  z-index: 100;
-  letter-spacing: 0.5px;
-  word-spacing: 6px;
+  background-color: #f3f1ed;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.contact-switch a:hover {
+  background-color: #e1ded9;
+}
+
+
+/* ===== 2-я строка — КБЖУ + сумма ===== */
+#kbju-text {
+  text-align: center;
+  font-size: 15px;
+  color: #444;
 }
 
 .dish {
