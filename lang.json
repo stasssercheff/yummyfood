@@ -235,7 +235,15 @@
  "ContactSoon": {
     "ru": "С вами скоро свяжутся. Благодарим за выбор YUMMY!",
     "en": "We will contact you soon. Thank you for choosing YUMMY!"
-}
+},
+ "total": {
+    "ru": "Итого:",
+    "en": "Total:"
+},
+ "portions": {
+    "ru": "порц.",
+    "en": "portions"
+ }
 
     
 }
