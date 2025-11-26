@@ -240,20 +240,22 @@ section,
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8px 10px;
-  gap: 6px;
+  padding: 10px;
+  gap: 8px;
 }
 
 /* Контейнер для кнопок связи */
 .contact-switch {
   display: flex;
   gap: 10px;
-  justify-content: center;
+  justify-content: space-between; /* распределяем кнопки */
   width: 100%;
+  max-width: 500px; /* ограничиваем ширину, чтобы не растягивались на весь экран */
 }
 
 .contact-switch a {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0; /* важно для корректного text-overflow */
   text-align: center;
   background-color: #f3f1ed;
   border: 1px solid #ccc;
@@ -271,14 +273,12 @@ section,
   color: #000;
 }
 
+/* Контейнер КБЖУ */
 #kbju-text {
   width: 100%;
+  max-width: 500px;
   text-align: center;
   font-size: 14px;
   color: #444;
   padding-top: 4px;
-}
-
-#total-kbju-bar {
-  border: 2px solid red;
 }
