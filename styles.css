@@ -255,3 +255,30 @@ section,
   background-color: #e1ded9; /* чуть темнее при наведении, как у section-title */
 }
 
+.contact-switch {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: flex-start;
+}
+
+.contact-switch a {
+  background-color: #f3f1ed;  /* как у разделов меню */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.contact-switch a:hover {
+  background-color: #e1ded9; /* как hover у section-title */
+}
+
+
+
+
