@@ -278,3 +278,7 @@ section,
   color: #444;
   padding-top: 4px;
 }
+
+#total-kbju-bar {
+  border: 2px solid red;
+}
