@@ -223,5 +223,19 @@
   "kbju": {
     "ru": "К/Б/Ж/У",
     "en": "P/F/C/F"
-  }
+  },
+ "OrderSent": {
+    "ru": "Ваша заявка отправлена!",
+    "en": "Your order has been recieved!"
+},
+ "YourOrder": {
+    "ru": "Ваш заказ:",
+    "en": "Your order:"
+},
+ "ContactSoon": {
+    "ru": "С вами скоро свяжутся. Благодарим за выбор YUMMY!",
+    "en": "We will contact you soon. Thank you for choosing YUMMY!"
+}
+
+    
 }
