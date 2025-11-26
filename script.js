@@ -1,18 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ====== i18n ======
+  let lang = localStorage.getItem("lang") || "ru";
+
+  function t(key) {
+    return translations[key]?.[lang] || translations[key]?.ru || key;
+  }
+
+  // ====== DOM ======
   const form = document.getElementById("orderForm");
   const popup = document.getElementById("popup");
   const popupMessage = document.getElementById("popup-message");
   const totalBar = document.getElementById("total-kbju-bar");
 
-  // ТЕКУЩИЙ ЯЗЫК
-  const currentLang = document.documentElement.lang || "ru";
-
-  // ФУНКЦИЯ ПЕРЕВОДА ПО КЛЮЧУ
-  function t(key) {
-    return window.i18n?.[key]?.[currentLang] || key;
-  }
-
-  // Функция подсчёта итогов
+  // ====== Итоги ======
   function updateTotals() {
     let totalKbju = [0, 0, 0, 0];
     let totalPrice = 0;
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const qty = parseInt(dish.querySelector('select.qty')?.value) || 0;
       const price = parseInt(dish.querySelector('.price')?.dataset.price) || 0;
       const kbjuStr = dish.querySelector('.kbju')?.dataset.kbju;
+
       if (!kbjuStr || qty === 0) return;
 
       const kbju = kbjuStr.split('/').map(Number);
@@ -30,10 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     totalBar.textContent =
-      `${t("total")} ${totalPrice.toLocaleString()}₫ — ${t("kbju")}: ${totalKbju.join('/')}`;
+      `${t("total")}: ${totalPrice.toLocaleString()}₫ — ${t("kbju")}: ${totalKbju.join("/")}`;
   }
 
-  // Инициализация селекторов
+  // ====== Селекторы ======
   document.querySelectorAll('select.qty').forEach(select => {
     if (select.options.length === 0) {
       for (let i = 0; i <= 8; i++) {
@@ -50,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let popupShown = false;
 
+  // ====== Submit ======
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -59,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const comment = form.comment.value.trim();
 
     if (!name || !contactMethod || !contactHandle) {
-      alert(currentLang === "ru" ? "Заполните все контактные поля" : "Fill in all contact fields");
+      alert(t("FillContacts"));
       return;
     }
 
@@ -73,12 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const kbjuStr = dish.querySelector('.kbju')?.dataset.kbju;
       if (!kbjuStr || qty === 0) return;
 
-      const [k, b, j, u] = kbjuStr.split('/').map(Number);
+      const [k,b,j,u] = kbjuStr.split('/').map(Number);
 
-      const dishName = dish.querySelector('.dish-name').textContent.trim();
-      const portionWord = t("portions");
-
-      orderItems.push(`${dishName} — ${qty} ${portionWord}`);
+      orderItems.push(
+        `${dish.querySelector('.dish-name').textContent.trim()} — ${qty} ${t("portions")}`
+      );
 
       kbjuTotal[0] += k * qty;
       kbjuTotal[1] += b * qty;
@@ -89,30 +91,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (orderItems.length === 0) {
-      alert(currentLang === "ru" ? "Выберите хотя бы одно блюдо." : "Select at least one dish.");
+      alert(t("ChooseDish"));
       return;
     }
 
     const emailBody = `
-Новый заказ от ${name}
-Контакт: ${contactMethod} - ${contactHandle}
-Комментарий: ${comment}
+${t("NewOrderFrom")} ${name}
+${t("Contact")}: ${contactMethod} - ${contactHandle}
+${t("Comment")}: ${comment}
 
-Заказ:
-${orderItems.map((x, i) => `${i + 1}. ${x}`).join("\n")}
+${t("YourOrder")}
+${orderItems.map((x,i)=>`${i+1}. ${x}`).join("\n")}
 
-${t("total")} ${totalPrice.toLocaleString()}₫ — К/Б/Ж/У: ${kbjuTotal.join('/')}
-    `;
+${t("total")}: ${totalPrice.toLocaleString()}₫ — ${t("kbju")}: ${kbjuTotal.join('/')}
+`;
 
+    // HTML заказа для попапа
     const orderHTML = `
       <ol style="margin:0; padding-left:18px; text-align:left;">
         ${orderItems.map(x => `<li>${x}</li>`).join("")}
       </ol>
       <br>
-      <b>${t("total")}</b> ${totalPrice.toLocaleString()}₫ — К/Б/Ж/У: ${kbjuTotal.join("/")}
+      <b>${t("total")}</b> ${totalPrice.toLocaleString()}₫ — ${t("kbju")}: ${kbjuTotal.join("/")}
     `;
 
-    // Попап
+    // ====== POPUP ======
     if (!popupShown) {
       popupMessage.innerHTML = `
         <div style="font-family:Arial;font-size:12px;">
@@ -127,14 +130,14 @@ ${t("total")} ${totalPrice.toLocaleString()}₫ — К/Б/Ж/У: ${kbjuTotal.joi
       popupShown = true;
     }
 
-    // Отправка на Web3Forms
+    // ====== Web3Forms ======
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
           access_key: "14d92358-9b7a-4e16-b2a7-35e9ed71de43",
-          subject: "New Yummy Order",
+          subject: "Yummy Order",
           from_name: "Yummy Food Form",
           message: emailBody,
           reply_to: contactHandle,
@@ -142,31 +145,30 @@ ${t("total")} ${totalPrice.toLocaleString()}₫ — К/Б/Ж/У: ${kbjuTotal.joi
         })
       });
       const data = await res.json();
-      if (!data.success)
-        alert(currentLang === "ru" ? "Ошибка отправки формы." : "Form submission error.");
-    } catch (err) {
+      if (!data.success) alert(t("SendError"));
+    } catch(err) {
       alert("Web3Forms error: " + err.message);
     }
 
-    // Telegram
+    // ====== Telegram ======
     try {
       await fetch("https://api.telegram.org/bot8472899454:AAGiebKRLt6VMei4toaiW11bR2tIACuSFeo/sendMessage", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {"Content-Type":"application/json"},
         body: JSON.stringify({
           chat_id: 7408180116,
           text: emailBody
         })
       });
-    } catch (err) {
-      console.error("Telegram error:", err.message);
+    } catch(err) {
+      console.error("Telegram error: ", err.message);
     }
 
     form.reset();
     updateTotals();
   });
 
-  window.closePopup = function () {
+  window.closePopup = function() {
     popup.classList.add("hidden");
     popupShown = false;
   };
