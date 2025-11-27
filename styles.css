@@ -282,10 +282,14 @@ section,
   font-size: 14px;
   color: #333;
   text-decoration: none;
-  margin-bottom: 30px;
-
 }
-
+.contact-switch {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 20px; /* вот этот отступ между контактами и языками */
+}
 .contact-switch a:hover {
   background: #e1ded9;
 }
