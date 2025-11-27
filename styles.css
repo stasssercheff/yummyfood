@@ -282,6 +282,8 @@ section,
   font-size: 14px;
   color: #333;
   text-decoration: none;
+  margin-bottom: 30px;
+
 }
 
 .contact-switch a:hover {
