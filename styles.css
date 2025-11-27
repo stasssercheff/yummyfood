@@ -255,35 +255,38 @@ section,
   background-color: #e1ded9; /* чуть темнее при наведении, как у section-title */
 }
 
-/* === ПАНЕЛЬ КНОПОК СВЯЗИ — ВСЕГДА НАД КБЖУ === */
-#contact-buttons-bar {
-  position: fixed;
-  bottom: 42px; /* чуть выше панели КБЖУ */
-  left: 0;
-  right: 0;
-  z-index: 150; /* выше КБЖУ, но ниже попапов */
-  background: #fff;
-  border-top: 1px solid #ccc;
-  padding: 8px 12px;
+/* === Исправление нижней панели для размещения кнопок связи === */
+#total-kbju-bar {
   display: flex;
-  justify-content: center;
-  gap: 12px;
-  box-shadow: 0 -1px 3px rgba(0,0,0,0.06);
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;              /* расстояние между кнопками и КБЖУ */
+  padding: 10px 12px;    /* увеличил чуть-чуть, чтобы все влезло */
 }
 
-/* сами кнопки */
-#contact-buttons-bar a {
+/* Кнопки связи */
+.contact-switch {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.contact-switch a {
   flex: 1;
   text-align: center;
-  background: #555;
-  color: #fff;
-  padding: 12px 14px;
+  background: #f3f1ed;
+  border: 1px solid #ccc;
   border-radius: 8px;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #333;
   text-decoration: none;
-  font-size: 16px;
-  font-weight: 600;
 }
 
-#contact-buttons-bar a:hover {
-  background: #222;
+.contact-switch a:hover {
+  background: #e1ded9;
 }
+
+
+
