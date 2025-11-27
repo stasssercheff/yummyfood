@@ -82,6 +82,7 @@ select {
 }
 
 /* ===== dish: выравнивание строго по шаблону ===== */
+/* Чёткое выравнивание dish-блока */
 .dish {
   display: grid;
   grid-template-columns: 1fr 60px;
@@ -91,6 +92,7 @@ select {
   margin-bottom: 12px;
 }
 
+/* Название блюда — слева сверху */
 .dish-name {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
@@ -100,6 +102,7 @@ select {
   margin: 0;
 }
 
+/* КБЖУ — под названием, не съезжает */
 .kbju {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
@@ -109,6 +112,7 @@ select {
   line-height: 1.2;
 }
 
+/* Селектор — строго справа по центру */
 .dish select.qty {
   grid-column: 2 / 3;
   grid-row: 1 / 3;
@@ -168,7 +172,7 @@ button:hover {
   margin: 15px 0;
 }
 
-/* === Нижняя панель: кнопки связи + КБЖУ === */
+/* Верхняя плашка с суммой КБЖУ */
 #total-kbju-bar {
   position: fixed;
   bottom: 0;
@@ -176,46 +180,14 @@ button:hover {
   right: 0;
   background: #fff;
   border-top: 1px solid #ccc;
-  padding: 8px 10px;
-  font-size: 16px;
-  text-align: center;
-  box-shadow: 0 -1px 4px rgba(0,0,0,0.08);
-  z-index: 1000;
-
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-/* строка с тремя кнопками */
-.contact-switch {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-/* сами кнопки */
-.contact-switch a {
-  background: #f3f1ed;
-  border: 1px solid #ccc;
   padding: 6px 10px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  color: #333;
-  transition: background 0.15s;
-}
-
-.contact-switch a:hover {
-  background: #e1ded9;
-}
-
-/* строка КБЖУ */
-#kbju-text {
   font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.04);
+  z-index: 100;
+  letter-spacing: 0.5px;
+  word-spacing: 6px;
 }
 
 .dish {
@@ -224,28 +196,29 @@ button:hover {
 
 .dish-name {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 2; /* максимум 2 строки */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.25;
-  max-height: calc(1.25em * 2);
+  max-height: calc(1.25em * 2); /* 2 строки по line-height */
 }
 
 .menu-wrapper {
-  background-color: #fffdf9;
+  background-color: #fffdf9; /* или твой нужный цвет */
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
 }
 
 .menu-wrapper {
-  background-color: #fffdf9;
+  background-color: #fffdf9; /* основной цвет */
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Убираем лишний белый фон у внутренних блоков */
 section,
 .input-block {
   background: transparent !important;
@@ -253,23 +226,21 @@ section,
   border-radius: 0 !important;
   box-shadow: none !important;
 }
-
 .dish .price {
   font-size: 13px;
   line-height: 1.2;
   color: #666;
   margin-top: 2px;
 }
-
 .lang-switch {
   display: flex;
-  gap: 10px;
+  gap: 10px;          /* расстояние между кнопками */
   margin-bottom: 20px;
-  justify-content: flex-start;
+  justify-content: flex-start; /* выравнивание по левому краю */
 }
 
 .lang-switch button {
-  background-color: #f3f1ed;
+  background-color: #f3f1ed; /* тот же цвет, что и у menu-section */
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 8px 16px;
@@ -281,5 +252,38 @@ section,
 }
 
 .lang-switch button:hover {
-  background-color: #e1ded9;
+  background-color: #e1ded9; /* чуть темнее при наведении, как у section-title */
+}
+
+/* === ПАНЕЛЬ КНОПОК СВЯЗИ — ВСЕГДА НАД КБЖУ === */
+#contact-buttons-bar {
+  position: fixed;
+  bottom: 42px; /* чуть выше панели КБЖУ */
+  left: 0;
+  right: 0;
+  z-index: 150; /* выше КБЖУ, но ниже попапов */
+  background: #fff;
+  border-top: 1px solid #ccc;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 -1px 3px rgba(0,0,0,0.06);
+}
+
+/* сами кнопки */
+#contact-buttons-bar a {
+  flex: 1;
+  text-align: center;
+  background: #555;
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#contact-buttons-bar a:hover {
+  background: #222;
 }
