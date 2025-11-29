@@ -44,13 +44,16 @@
                required data-i18n-placeholder="contactHandlePlaceholder" placeholder="Ник или номер" />
       </div>
 
-
-<div id="instruction-popup" class="popup hidden">
-  <div class="popup-content">
-    <h2 data-i18="instruction_title"></h2>
-    <pre id="instruction-text"></pre>
-    <button onclick="closeInstruction()" data-i18="close"></button>
-  </div>
+<!-- Кнопка открытия попапа (например, рядом с кнопками связи) -->
+<div class="contact-switch">
+  <a href="https://wa.me/79214070975" target="_blank">WhatsApp</a>
+  <a href="tg://resolve?domain=@yummyfood7">Telegram</a>
+  <a href="https://zalo.me/0787417154" target="_blank">Zalo</a>
+  
+  <!-- Вот новая кнопка попапа -->
+  <button type="button" class="contact-button" onclick="openInstructionPopup()">
+    Инструкция
+  </button>
 </div>
       
       <div class="menu-wrapper">
