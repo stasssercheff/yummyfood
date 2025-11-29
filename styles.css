@@ -331,5 +331,26 @@ section,
 }
 
 
+.instruction-button {
+  display: block;           
+  width: 60%;                /* ширина относительно родителя */
+  max-width: 300px;          /* максимальная ширина, если контейнер большой */
+  min-width: 150px;          /* минимальная ширина, если контейнер маленький */
+  margin: 0 auto 20px auto;  /* центрирование по горизонтали, отступ снизу 20px */
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f3f1ed;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 20px; /* отступ снизу до комментария */
 
+}
+
+.instruction-button:hover {
+  background-color: #e1ded9;
+}
 
