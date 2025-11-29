@@ -302,4 +302,18 @@ section,
   margin-bottom: 20px; /* отступ снизу до комментария */
 }
 
+.contact-button {
+  background: #f3f1ed;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  text-align: center;
+}
+
+.contact-button:hover {
+  background: #e1ded9;
+}
 
