@@ -44,6 +44,15 @@
                required data-i18n-placeholder="contactHandlePlaceholder" placeholder="Ник или номер" />
       </div>
 
+
+<div id="instruction-popup" class="popup hidden">
+  <div class="popup-content">
+    <h2 data-i18="instruction_title"></h2>
+    <pre id="instruction-text"></pre>
+    <button onclick="closeInstruction()" data-i18="close"></button>
+  </div>
+</div>
+      
       <div class="menu-wrapper">
         <!-- ===== ЗАВТРАК ===== -->
         <div class="menu-section">
