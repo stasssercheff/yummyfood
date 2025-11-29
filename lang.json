@@ -243,7 +243,30 @@
  "portions": {
     "ru": "порц.",
     "en": "portions"
+   },
+ "close": {
+    "ru": "Закрыть",
+    "en": "Close"
+ },
+ "instruction_title": {
+    "ru": "Инструкция",
+    "en": "Instruction"
+},
+ "instruction_title": {
+    "ru": "1. Микроволновая печь - не стоит
+2. Еда в пакете размораживается либо в воде либо кладется на ночь в холодильник
+3. Размороженную еду в пакете (не вскрывая) нужно поместить в холодную воду (в кастрюле или в сковороде) поставить на плиту и на не сильном огне/мощности разогревать в течение 10-15 минут(не доводя воду до кипения)
+4. Супы и пюре можно класть сразу в кипяток сразу из морозилки(в замороженном состоянии) важно после прогрева, используя полотенца промять пакет, чтобы  довести содержимое до однородной консистенции.
+5. Разогретую еду переложить/перелить из пакета в тарелку (для супов/пюре лучше использовать полотенце чтобы не обжечь руки)",
+    "en": "	1.	Do not use a microwave.
+	2.	Frozen food in the bag should be thawed either in water or placed in the fridge overnight.
+	3.	Place thawed food in the bag (without opening) into cold water (in a pot or pan) and heat on the stove over low/medium heat for 10–15 minutes (do not let the water boil).
+	4.	Soups and purees can be placed directly into boiling water from the freezer (still frozen). After heating, gently squeeze the bag with a towel to mix the contents into a smooth consistency.
+	5.	Transfer the heated food from the bag to a plate (for soups/purees, it’s better to use a towel to avoid burning your hands)."
  }
+
+
+    
 
     
 }
