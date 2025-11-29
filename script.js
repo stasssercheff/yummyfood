@@ -217,32 +217,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
 
-
-// Твой словарь i18
-const i18 = {
-  close: { ru: "Закрыть", en: "Close" },
-  instruction_title: { ru: "Инструкция", en: "Instruction" },
-  instruction: { 
-    ru: "Инструкция\n\n1. Разморозьте пакет одним из двух способов:\n    1. Положите пакет в холодильник на ночь.\n    2. Положите пакет в емкость с холодной водой.\n2. Размороженную еду в пакете (не вскрывать!) поместите в холодную воду в сковороде/кастрюле и разогревайте на невысокой мощности в течение 10–15 минут. Важно: вода не должна кипеть!\n3. Супы и пюре можно класть в кипяток сразу из морозилки в замороженном состоянии. После прогрева аккуратно промните пакет, используя полотенце, чтобы довести содержимое до однородной консистенции.\n4. Разогретую еду переложите или перелейте из пакета в тарелку. Для супов и пюре лучше использовать полотенце, чтобы не обжечь руки.\n5. Приятного аппетита!",
-    en: "Instructions\n\n1. Thaw the package using one of the two methods:\n    1. Place the package in the refrigerator overnight.\n    2. Place the package in a container with cold water.\n2. For thawed food in the package (do not open!), place it in cold water in a pan/pot and heat on low for 10–15 minutes. Important: the water must not boil!\n3. Soups and purees can be placed directly in boiling water from frozen. After heating, gently massage the package using a towel to make the contents uniform.\n4. Transfer or pour the heated food from the package into a plate. For soups and purees, use a towel to avoid burning your hands.\n5. Enjoy your meal!"
-  }
-};
-
-// Показ попапа
-function showInstruction(lang = "ru") {
-  document.querySelector('#instruction-popup h2').textContent = i18.instruction_title[lang];
-  document.querySelector('#instruction-popup button').textContent = i18.close[lang];
-  document.getElementById('instruction-text').textContent = i18.instruction[lang];
-  document.getElementById('instruction-popup').classList.remove('hidden');
-}
-
-// Закрытие
-function closeInstruction() {
-  document.getElementById('instruction-popup').classList.add('hidden');
-}
-
-// Пример вызова: showInstruction('ru') или showInstruction('en')
-    
     // build plain text emailBody using translations
     const emailBody = [
       `${t('NewOrderFrom') || (lang==='ru' ? 'Новый заказ от' : 'New order from')} ${name}`,
@@ -300,7 +274,6 @@ function closeInstruction() {
       console.warn('Web3Forms error', err);
     }
 
-    
     // send to Telegram (best-effort)
     try {
       await fetch("https://api.telegram.org/bot8472899454:AAGiebKRLt6VMei4toaiW11bR2tIACuSFeo/sendMessage", {
