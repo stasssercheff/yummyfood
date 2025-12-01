@@ -25,19 +25,25 @@
     </div>
 
       <!-- Кнопка инструкция -->
+<!-- Кнопка, которая открывает попап -->
+<div class="contact-buttons">
+  <button type="button" class="instruction-button" onclick="openInstructionPopup()">
+    <span data-i18n="instruction_title">Инструкция</span>
+  </button>
+</div>
+
+<!-- Сам попап -->
 <div id="instructionPopup" class="popup-overlay" style="display:none;">
   <div class="popup-content">
     <button class="popup-close" onclick="closeInstructionPopup()">×</button>
-
     <h2 data-i18n="instruction_title"></h2>
-
     <pre class="instruction-text" data-i18n="instruction"></pre>
-
-    <button class="popup-main-button" onclick="closeInstructionPopup()" data-i18n="close">
-      Закрыть
-    </button>
+    <button class="popup-main-button" onclick="closeInstructionPopup()" data-i18n="close"></button>
   </div>
 </div>
+
+
+
     
     <form id="orderForm">
       <!-- имя -->
