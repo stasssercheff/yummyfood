@@ -7,6 +7,13 @@ window.t = function(key) {
   return (node[lang] ?? node['ru'] ?? Object.values(node)[0] ?? key);
 };
 
+
+
+
+
+
+
+
 // popup инструкции
 window.openInstructionPopup = function() {
   const title = t('instruction_title');
@@ -26,6 +33,13 @@ window.openInstructionPopup = function() {
   `;
 
   popup.classList.remove('hidden');
+};
+
+// close popup function (глобально, для кнопки инструкции)
+window.closePopup = function() {
+  const popup = document.getElementById("popup");
+  if (!popup) return;
+  popup.classList.add('hidden');
 };
 
 // app.js — merged i18n + app logic
