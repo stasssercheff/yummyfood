@@ -304,24 +304,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     updateTotals();
   });
 
-function openInstructionPopup() {
-  const title = t('instruction_title');
-  const content = t('instruction');
-
-  const popup = document.createElement('div');
-  popup.className = 'popup-overlay';
-  popup.innerHTML = `
-    <div class="popup-content">
-      <h2>${title}</h2>
-      <pre>${content}</pre>
-      <button onclick="closePopup(this)">${t('close')}</button>
-    </div>
-  `;
-  document.body.appendChild(popup);
-}
-  
-function closePopup(btn) {
-  btn.closest('.popup-overlay').remove();
-}
-  
 }); // DOMContentLoaded end
