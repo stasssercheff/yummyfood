@@ -1,8 +1,18 @@
-function openInstructionPopup() {
+// делаем t глобальной для использования в openInstructionPopup
+window.t = function(key) {
+  if (!window.translations || !key) return key;
+  const node = window.translations[key];
+  if (!node) return key;
+  const lang = window.lang || 'ru';
+  return (node[lang] ?? node['ru'] ?? Object.values(node)[0] ?? key);
+};
+
+// popup инструкции
+window.openInstructionPopup = function() {
   const title = t('instruction_title');
   const content = t('instruction');
 
-  const popup = document.getElementById("popup");       // используем существующий
+  const popup = document.getElementById("popup");       
   const popupMessage = document.getElementById("popup-message");
 
   if (!popup || !popupMessage) return;
@@ -16,7 +26,7 @@ function openInstructionPopup() {
   `;
 
   popup.classList.remove('hidden');
-}
+};
 
 // app.js — merged i18n + app logic
 document.addEventListener('DOMContentLoaded', async () => {
