@@ -1,58 +1,3 @@
-// делаем t глобальной для использования в openInstructionPopup
-window.t = function(key) {
-  if (!window.translations || !key) return key;
-  const node = window.translations[key];
-  if (!node) return key;
-  const lang = window.lang || 'ru';
-  return (node[lang] ?? node['ru'] ?? Object.values(node)[0] ?? key);
-};
-
-
-
-
-
-
-
-
-// popup инструкции
-window.openInstructionPopup = function() {
-  const title = t('instruction_title');
-  const content = t('instruction');
-
-  const popup = document.getElementById("popup");
-  const popupMessage = document.getElementById("popup-message");
-  if (!popup || !popupMessage) return;
-
-  popupMessage.innerHTML = `
-    <h2>${title}</h2>
-    <pre style="white-space: pre-wrap;">${content}</pre>
-    <button onclick="window.closePopup()">${t('close')}</button>
-  `;
-
-  popup.classList.remove('hidden');
-
-  // клик по фону закрывает попап
-  popup.addEventListener('click', function(e) {
-    if (e.target === popup) {
-      window.closePopup();
-    }
-  });
-};
-
-// close popup function
-window.closePopup = function() {
-  const popup = document.getElementById("popup");
-  if (!popup) return;
-  popup.classList.add('hidden');
-};
-
-
-
-
-
-
-
-
 // app.js — merged i18n + app logic
 document.addEventListener('DOMContentLoaded', async () => {
   // -------------------------
@@ -60,68 +5,94 @@ document.addEventListener('DOMContentLoaded', async () => {
   // -------------------------
   const LANG_KEY = 'lang';
   let translations = {};
+  // default lang: either saved or from <html lang=""> or 'ru'
   let lang = localStorage.getItem(LANG_KEY)
              || document.documentElement.lang
              || 'ru';
 
+  // load translations
   async function loadTranslations() {
     try {
       const res = await fetch('lang.json', {cache: "no-store"});
       translations = await res.json();
     } catch (err) {
       console.error('Ошибка загрузки lang.json', err);
-      translations = {};
+      translations = {}; // fallback
     }
   }
 
+  // safe accessor: translations[key][lang] -> fallback key or ru or empty
   function t(key) {
     if (!translations || !key) return key;
     const node = translations[key];
     if (!node) return key;
+    // prefer exact lang, fallback to 'ru', fallback to first string value, fallback key
     return (node[lang] ?? node['ru'] ?? Object.values(node)[0] ?? key);
   }
 
+  // apply translations to DOM nodes with data-i18n, data-i18n-placeholder, data-i18n-gramm
   function applyTranslationsToDOM() {
+    // text nodes
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       const value = t(key);
       if (value !== undefined) el.textContent = value;
     });
+
+    // placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
       const value = t(key);
       if (value !== undefined) el.placeholder = value;
     });
+
+    // gramm (граммы)
     document.querySelectorAll('[data-i18n-gramm]').forEach(el => {
       const key = el.getAttribute('data-i18n-gramm');
       const value = t(key);
       if (value !== undefined) el.textContent = value;
     });
+
+    // translate option elements that have data-i18n (like <option data-i18n="selectOption">)
     document.querySelectorAll('option[data-i18n]').forEach(opt => {
       const key = opt.getAttribute('data-i18n');
       opt.textContent = t(key);
     });
 
+    // total bar (some initial text)
     const totalBar = document.getElementById('total-kbju-bar');
     if (totalBar) {
-      if (totalBar.dataset.init !== "1") {
+      // keep numeric values (if any) intact — update label
+      // If it's initial zero state, show translated label
+      // We'll refresh totals separately
+      if (totalBar.dataset.init === "1") {
+        // already formatted by updateTotals
+      } else {
         totalBar.textContent = `${t('total') || 'ИТОГО'}: 0₫ — ${t('kbju') || 'К/Б/Ж/У'}: 0/0/0/0`;
       }
     }
   }
 
+  // set language (persist + reapply)
   function setLanguage(newLang) {
     if (!newLang) return;
     lang = newLang;
     localStorage.setItem(LANG_KEY, lang);
+    // update html lang attribute too
     document.documentElement.lang = lang;
     applyTranslationsToDOM();
+    // trigger custom event so other parts can react (if necessary)
     window.dispatchEvent(new CustomEvent('i18n:changed', {detail: {lang}}));
+    // update totals to re-render labels with translated kbju/total
     updateTotals();
   }
 
+  // -------------------------
+  // load translations then init UI
+  // -------------------------
   await loadTranslations();
 
+  // DOM refs
   const form = document.getElementById("orderForm");
   const popup = document.getElementById("popup");
   const popupMessage = document.getElementById("popup-message");
@@ -129,18 +100,25 @@ document.addEventListener('DOMContentLoaded', async () => {
   const btnRu = document.getElementById('btn-ru');
   const btnEn = document.getElementById('btn-en');
 
+  // apply initial translations
   applyTranslationsToDOM();
 
+  // buttons
   if (btnRu) btnRu.addEventListener('click', () => setLanguage('ru'));
   if (btnEn) btnEn.addEventListener('click', () => setLanguage('en'));
 
+  // -------------------------
+  // quantity selects and totals
+  // -------------------------
   function parseKbjuString(kbjuStr) {
+    // parse floats (some kbju have decimals like 17.1)
     return kbjuStr.split('/').map(s => Number(s));
   }
 
   function updateTotals() {
     let totalKbju = [0,0,0,0];
     let totalPrice = 0;
+
     document.querySelectorAll('.dish').forEach(dish => {
       const select = dish.querySelector('select.qty');
       const qty = parseInt(select?.value) || 0;
@@ -152,12 +130,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       totalPrice += price * qty;
     });
 
+    // mark init so applyTranslations won't overwrite custom formatting later
     if (totalBar) {
       totalBar.dataset.init = "1";
       totalBar.textContent = `${t('total') || 'ИТОГО'}: ${totalPrice.toLocaleString()}₫ — ${t('kbju') || 'К/Б/Ж/У'}: ${totalKbju.join('/')}`;
     }
   }
 
+  // init selects (0..8) and listen change
   document.querySelectorAll('select.qty').forEach(select => {
     if (select.options.length === 0) {
       for (let i = 0; i <= 8; i++) {
@@ -172,6 +152,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   updateTotals();
 
+  // -------------------------
+  // helper to get dish display name in current language
+  // prefer data-i18n key if present (so we get correct translated name even if DOM not updated for some reason)
+  // otherwise use textContent
+  // -------------------------
   function getDishDisplayName(dish) {
     const nameEl = dish.querySelector('.dish-name');
     if (!nameEl) return '';
@@ -182,6 +167,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     return nameEl.textContent.trim();
   }
 
+  // -------------------------
+  // SUBMIT handler
+  // -------------------------
   let popupShown = false;
 
   form.addEventListener('submit', async (e) => {
@@ -192,6 +180,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const contactHandle = form.contactHandle.value.trim();
     const comment = form.comment.value.trim();
 
+    // small helper translations for alerts — try keys then simple defaults
     const alertFill = translations['FillContacts'] ? (translations['FillContacts'][lang] ?? translations['FillContacts']['ru']) : (lang === 'ru' ? 'Заполните все контактные поля' : 'Fill in all contact fields');
     const alertChoose = translations['ChooseDish'] ? (translations['ChooseDish'][lang] ?? translations['ChooseDish']['ru']) : (lang === 'ru' ? 'Выберите хотя бы одно блюдо.' : 'Select at least one dish.');
 
@@ -228,6 +217,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
 
+    // build plain text emailBody using translations
     const emailBody = [
       `${t('NewOrderFrom') || (lang==='ru' ? 'Новый заказ от' : 'New order from')} ${name}`,
       `${t('Contact') || (lang==='ru' ? 'Контакт' : 'Contact')}: ${contactMethod} - ${contactHandle}`,
@@ -240,6 +230,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       '',
     ].join('\n');
 
+    // orderHTML for popup (translated labels)
     const orderHTML = `
       <ol style="margin:0; padding-left:18px; text-align:left;">
         ${orderItems.map(x => `<li>${x}</li>`).join('')}
@@ -248,6 +239,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       <b>${t('total') || (lang==='ru' ? 'Итого:' : 'Total:')}</b> ${totalPrice.toLocaleString()}₫ — ${t('kbju') || (lang==='ru' ? 'К/Б/Ж/У' : 'P/F/C/F')}: ${kbjuTotal.join('/')}
     `;
 
+    // popup — translated full
     popupMessage.innerHTML = `
       <div style="font-family:Arial;font-size:12px;">
         <div><b>${name}</b>!</div>
@@ -260,6 +252,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     popup.classList.remove('hidden');
     popupShown = true;
 
+    // send to web3forms (attempt)
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -281,6 +274,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.warn('Web3Forms error', err);
     }
 
+    // send to Telegram (best-effort)
     try {
       await fetch("https://api.telegram.org/bot8472899454:AAGiebKRLt6VMei4toaiW11bR2tIACuSFeo/sendMessage", {
         method: "POST",
@@ -298,15 +292,36 @@ document.addEventListener('DOMContentLoaded', async () => {
     updateTotals();
   });
 
-  // close popup function (глобально, для кнопки инструкции)
+  // close popup function (expose globally as HTML uses onclick)
   window.closePopup = function() {
     popup.classList.add('hidden');
     popupShown = false;
   };
 
+  // make sure DOM translations update when i18n:changed fired (redundant but safe)
   window.addEventListener('i18n:changed', () => {
     applyTranslationsToDOM();
     updateTotals();
   });
 
-});
+function openInstructionPopup() {
+  const title = t('instruction_title');
+  const content = t('instruction');
+
+  const popup = document.createElement('div');
+  popup.className = 'popup-overlay';
+  popup.innerHTML = `
+    <div class="popup-content">
+      <h2>${title}</h2>
+      <pre>${content}</pre>
+      <button onclick="closePopup(this)">${t('close')}</button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+}
+  
+function closePopup(btn) {
+  btn.closest('.popup-overlay').remove();
+}
+  
+}); // DOMContentLoaded end
