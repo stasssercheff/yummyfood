@@ -19,28 +19,39 @@ window.openInstructionPopup = function() {
   const title = t('instruction_title');
   const content = t('instruction');
 
-  const popup = document.getElementById("popup");       
+  const popup = document.getElementById("popup");
   const popupMessage = document.getElementById("popup-message");
-
   if (!popup || !popupMessage) return;
 
   popupMessage.innerHTML = `
-    <div class="popup-content">
-      <h2>${title}</h2>
-      <pre>${content}</pre>
-      <button onclick="window.closePopup()">${t('close')}</button>
-    </div>
+    <h2>${title}</h2>
+    <pre style="white-space: pre-wrap;">${content}</pre>
+    <button onclick="window.closePopup()">${t('close')}</button>
   `;
 
   popup.classList.remove('hidden');
+
+  // клик по фону закрывает попап
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) {
+      window.closePopup();
+    }
+  });
 };
 
-// close popup function (глобально, для кнопки инструкции)
+// close popup function
 window.closePopup = function() {
   const popup = document.getElementById("popup");
   if (!popup) return;
   popup.classList.add('hidden');
 };
+
+
+
+
+
+
+
 
 // app.js — merged i18n + app logic
 document.addEventListener('DOMContentLoaded', async () => {
