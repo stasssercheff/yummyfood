@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // -------------------------
   // i18n loader + helpers
   // -------------------------
-  const LANG_KEY = 'lang';
+  const LANG_KEY = 'lang'; 
   let translations = {};
   // default lang: either saved or from <html lang=""> or 'ru'
   let lang = localStorage.getItem(LANG_KEY)
