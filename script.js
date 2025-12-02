@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // POPUP ИНСТРУКЦИИ (отдельный от заказа)
 // ===============================
 window.openInstructionPopup = function () {
-  const popup = document.getElementById('popup-instruction'); // отдельный popup в HTML
+  const popup = document.getElementById('popup-instruction');
   const textEl = document.getElementById('instruction-text');
   const titleEl = document.getElementById('instruction-title');
 
@@ -47,7 +47,7 @@ window.openInstructionPopup = function () {
 
   // Подставляем текст инструкции с учетом языка
   textEl.textContent = t("instruction"); // ключ из lang.json
-  if (titleEl) titleEl.textContent = t("instruction_title"); // заголовок
+  if (titleEl) titleEl.textContent = t("instruction_title");
 
   popup.classList.remove('hidden');
 };
@@ -56,14 +56,6 @@ window.closeInstructionPopup = function () {
   const popup = document.getElementById('popup-instruction');
   if (popup) popup.classList.add('hidden');
 };
-
-// Если у тебя есть отдельная кнопка с id="btn-instruction", можно подключить через addEventListener
-const btnInstruction = document.getElementById('btn-instruction');
-if (btnInstruction) btnInstruction.addEventListener('click', openInstructionPopup);
-
-
-  
-
 
 
 
