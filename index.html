@@ -18,6 +18,7 @@
   </div>
 
     
+    
     <!-- Кнопки смены языка -->
     <div class="lang-switch">
       <button id="btn-ru">RU</button>
@@ -31,6 +32,8 @@
 </button>
 </div>
        
+
+
     
     <form id="orderForm">
       <!-- имя -->
@@ -52,6 +55,21 @@
                required data-i18n-placeholder="contactHandlePlaceholder" placeholder="Ник или номер" />
       </div>
 
+
+<!-- POPUP ИНСТРУКЦИИ -->
+<div id="popup-instruction" class="popup hidden">
+  <div class="popup-content">
+    <h2 id="instruction-title" data-i18n="instruction_title">Инструкция</h2>
+
+    <pre id="instruction-text" data-i18n="instruction"></pre>
+
+    <button class="popup-close" onclick="closeInstructionPopup()" data-i18n="close">
+      Закрыть
+    </button>
+  </div>
+</div>
+
+      
       <div class="menu-wrapper">
         <!-- ===== ЗАВТРАК ===== -->
         <div class="menu-section">
