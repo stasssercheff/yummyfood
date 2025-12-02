@@ -30,6 +30,48 @@ document.addEventListener('DOMContentLoaded', async () => {
     return (node[lang] ?? node['ru'] ?? Object.values(node)[0] ?? key);
   }
 
+
+
+
+
+
+// ===============================
+// POPUP ИНСТРУКЦИИ (отдельный от заказа)
+// ===============================
+window.openInstructionPopup = function () {
+  const popup = document.getElementById('popup-instruction'); // отдельный popup в HTML
+  const textEl = document.getElementById('instruction-text');
+  const titleEl = document.getElementById('instruction-title');
+
+  if (!popup || !textEl) return;
+
+  // Подставляем текст инструкции с учетом языка
+  textEl.textContent = t("instruction"); // ключ из lang.json
+  if (titleEl) titleEl.textContent = t("instruction_title"); // заголовок
+
+  popup.classList.remove('hidden');
+};
+
+window.closeInstructionPopup = function () {
+  const popup = document.getElementById('popup-instruction');
+  if (popup) popup.classList.add('hidden');
+};
+
+// Если у тебя есть отдельная кнопка с id="btn-instruction", можно подключить через addEventListener
+const btnInstruction = document.getElementById('btn-instruction');
+if (btnInstruction) btnInstruction.addEventListener('click', openInstructionPopup);
+
+
+  
+
+
+
+
+
+
+
+  
+
   // apply translations to DOM nodes with data-i18n, data-i18n-placeholder, data-i18n-gramm
   function applyTranslationsToDOM() {
     // text nodes
