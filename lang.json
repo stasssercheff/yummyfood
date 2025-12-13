@@ -140,13 +140,13 @@
     "ru": "Котлеты из форели с фасолью",
     "en": "Trout cutlets with beans"
   },
-  "chickenCutletsPepper": {
-    "ru": "Котлеты куриные с перцем",
-    "en": "Chicken cutlets with pepper"
+  "chickenCutletsVegetables": {
+    "ru": "Котлеты куриные с овощами",
+    "en": "Chicken cutlets with vegetables"
   },
   "shrimpZucchiniRice": {
-    "ru": "Креветки с цукини и рисом",
-    "en": "Shrimp with zucchini and rice"
+    "ru": "Креветки с цукини и бурым рисом",
+    "en": "Shrimp with zucchini and brown rice"
   },
   "chickenBreastMashed": {
     "ru": "Куриная грудка с картофельным пюре",
