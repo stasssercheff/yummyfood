@@ -1,1 +1,626 @@
-  1
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+  <title>Yummy</title>
+  <link rel="stylesheet" href="styles.css" />
+<meta property="og:title" content="Yummy Food">
+<meta property="og:image" content="https://stasssercheff.github.io/yummyfood/logo.PNG">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1484">
+<meta property="og:image:height" content="1272">
+<meta property="og:url" content="https://yourdomain.com/">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="/yummyfood/favicon.ico">
+<link rel="apple-touch-icon" sizes="512x512" href="/yummyfood/icon-512.png">
+
+<meta property="og:image" content="https://stasssercheff.github.io/yummyfood/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+
+  
+</head>
+<body>
+  <div class="container">
+    <img src="logo.PNG" alt="Yummy logo" class="logo" />
+
+    <div class="contact-switch">
+    <a href="https://wa.me/79214070975" target="_blank">WhatsApp</a>
+    <a href="tg://resolve?domain=@yummyfood7">Telegram</a>
+    <a href="https://zalo.me/0787417154" target="_blank">Zalo</a>
+  </div>
+
+    
+    
+    <!-- Кнопки смены языка -->
+    <div class="lang-switch">
+      <button id="btn-ru">RU</button>
+      <button id="btn-en">EN</button>
+    </div>
+
+ <!-- Кнопка инструкция  -->
+ <div class="contact-buttons">
+   <button type="button" class="instruction-button" onclick="openInstructionPopup()">
+  <span data-i18n="instruction_title">Инструкция</span>
+</button>
+</div>
+       
+
+
+    
+    <form id="orderForm">
+      <!-- имя -->
+      <div class="input-block">
+        <label for="name" data-i18n="name">Имя</label>
+        <input id="name" name="name" required data-i18n-placeholder="name" placeholder="Имя"/>
+      </div>
+
+      <!-- соцсеть + ник -->
+      <div class="input-block">
+        <label for="contactMethod" data-i18n="contactMethodLabel">Выберите социальную сеть</label>
+        <select id="contactMethod" name="contactMethod" required>
+          <option value="" disabled selected hidden data-i18n="selectOption">Выберите</option>
+          <option value="Telegram">Telegram</option>
+          <option value="WhatsApp">WhatsApp</option>
+          <option value="Zalo">Zalo</option>
+        </select>
+        <input id="contactHandle" name="contactHandle"
+               required data-i18n-placeholder="contactHandlePlaceholder" placeholder="Ник или номер" />
+      </div>
+
+
+<!-- POPUP ИНСТРУКЦИИ -->
+<div id="popup-instruction" class="popup hidden">
+  <div class="popup-content">
+    <h2 id="instruction-title" data-i18n="instruction_title">Инструкция</h2>
+
+    <pre id="instruction-text" data-i18n="instruction"></pre>
+
+    <button class="popup-close" onclick="closeInstructionPopup()" data-i18n="close">
+      Закрыть
+    </button>
+  </div>
+</div>
+
+      
+      <div class="menu-wrapper">
+        <!-- ===== ЗАВТРАК ===== -->
+        <div class="menu-section">
+          <div class="section-title" data-i18n="breakfast">Завтрак</div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="crepesChickenVeg">Блины с курицей и овощами</div>
+            <div class="kbju" data-kbju="757/21/84/24">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">757/21/84/24</span>
+            </div>
+            <div class="price" data-price="100000">270 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Блины с курицей и овощами" class="qty"></select>
+          </div>
+
+
+
+          
+          <div class="dish">
+            <div class="dish-name" data-i18n="crepesChickenCream">Блины с курицей в сливках</div>
+            <div class="kbju" data-kbju="484/21/81/23">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">484/21/81/23</span>
+            </div>
+            <div class="price" data-price="100000">270 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Блины с курицей в сливках" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="crepesYogurtHoney">Блины с йогуртом и медом</div>
+            <div class="kbju" data-kbju="582/20/26/69">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">582/20/26/69</span>
+            </div>
+            <div class="price" data-price="100000">330 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Блины с йогуртом и медом" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="crepesCheeseHam">Блины с сыром и ветчиной</div>
+            <div class="kbju" data-kbju="517/36/35/16">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">517/36/35/16</span>
+            </div>
+            <div class="price" data-price="120000">270 <span data-i18n-gramm="gramm">гр.</span> 120 000₫</div>
+            <select name="Блины с сыром и ветчиной" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="zucchiniPancakes">Драники из цукини с йогуртом</div>
+            <div class="kbju" data-kbju="451/17/24/42">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">451/17/24/42</span>
+            </div>
+            <div class="price" data-price="100000">250 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Драники из цукини с йогуртом" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="potatoPancakes">Драники из картофеля с йогуртом</div>
+            <div class="kbju" data-kbju="464/18/25/43">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">464/18/25/43</span>
+            </div>
+            <div class="price" data-price="100000">250 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Драники из картофеля с йогуртом" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="yogurtGranola">Йогурт с гранолой и тыквенными семечками</div>
+            <div class="kbju" data-kbju="424/15/15/62">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">424/15/15/62</span>
+            </div>
+            <div class="price" data-price="120000">220 <span data-i18n-gramm="gramm">гр.</span> 130 000₫</div>
+            <select name="Йогурт с гранолой и тыквенными семечками" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="omeletBroccoli">Омлет с брокколи</div>
+            <div class="kbju" data-kbju="428/2/44/5">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">428/2/44/5</span>
+            </div>
+            <div class="price" data-price="100000">135 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Омлет с брокколи" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="omeletSunDriedTomatoes">Омлет с вялеными томатами</div>
+            <div class="kbju" data-kbju="1097/10/89/68">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">1097/10/89/68</span>
+            </div>
+            <div class="price" data-price="100000">135 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Омлет с вялеными томатами" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="pancakesMapleYogurt">Панкейки с кленовым сиропом и йогуртом</div>
+            <div class="kbju" data-kbju="818/17/32/117">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">818/17/32/117</span>
+            </div>
+            <div class="price" data-price="120000">310 <span data-i18n-gramm="gramm">гр.</span> 120 000₫</div>
+            <select name="Панкейки с кленовым сиропом и йогуртом" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="cheesecakesYogurt">Сырники с йогуртом</div>
+             <div class="kbju" data-kbju="382/24/18/32">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">382/24/18/32</span>
+            </div>
+            <div class="price" data-price="120000">200 <span data-i18n-gramm="gramm">гр.</span> 120 000₫</div>
+            <select name="Сырники с йогуртом" class="qty"></select>
+          </div>
+        </div>
+
+        <!-- ===== СУП ===== -->
+        <div class="menu-section">
+          <div class="section-title" data-i18n="soup">Суп</div>
+
+
+
+
+           <div class="dish">
+            <div class="dish-name" data-i18n="creamMushroom">Крем-суп грибной</div>
+             <div class="kbju" data-kbju="328/8/24/21">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">328/8/24/21</span>
+            </div>
+            <div class="price" data-price="100000">300 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Крем-суп из брокколи" class="qty"></select>
+          </div>
+
+
+          
+          <div class="dish">
+            <div class="dish-name" data-i18n="creamBroccoli">Крем-суп из брокколи</div>
+             <div class="kbju" data-kbju="59/4/1/13">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">59/4/1/13</span>
+            </div>
+            <div class="price" data-price="100000">300 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Крем-суп из брокколи" class="qty"></select>
+          </div>
+<!--
+          <div class="dish">
+            <div class="dish-name" data-i18n="creamCauliflower">Крем-суп из цветной капусты</div>
+             <div class="kbju" data-kbju="49/3/0/10">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">49/3/0/10</span>
+            </div>
+            <div class="price" data-price="100000">300 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Крем-суп из цветной капусты" class="qty"></select>
+          </div>
+-->
+          <div class="dish">
+            <div class="dish-name" data-i18n="creamChicken">Крем-суп куриный</div>
+             <div class="kbju" data-kbju="122/19/1/11">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">122/19/1/11</span>
+            </div>
+            <div class="price" data-price="100000">300 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Крем-суп куриный" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="creamVeg">Крем-суп овощной</div>
+             <div class="kbju" data-kbju="59/2/0/13">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">59/2/0/13</span>
+            </div>
+            <div class="price" data-price="100000">300 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Крем-суп овощной" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="creamPumpkin">Крем-суп тыквенный</div>
+             <div class="kbju" data-kbju="247/3/15/24">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">247/3/15/24</span>
+            </div>
+            <div class="price" data-price="100000">300 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Крем-суп тыквенный" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="creamLentil">Крем-суп чечевичный</div>
+             <div class="kbju" data-kbju="207/7/10/23">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">207/7/10/23</span>
+            </div>
+            <div class="price" data-price="100000">300 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+            <select name="Крем-суп чечевичный" class="qty"></select>
+          </div>
+
+          <div class="dish">
+            <div class="dish-name" data-i18n="tomYam">Том Ям с креветками и рисом</div>
+             <div class="kbju" data-kbju="365/17/20/29">
+            <span data-i18n="kbju">К/Б/Ж/У:</span>
+            <span class="kbju-values">365/17/20/29</span>
+            </div>
+            <div class="price" data-price="150000">450 <span data-i18n-gramm="gramm">гр.</span> 150 000₫</div>
+            <select name="Том Ям с креветками и рисом" class="qty"></select>
+          </div>
+        </div>
+
+<!-- ===== ОСНОВНОЕ БЛЮДО ===== -->
+<div class="menu-section">
+  <div class="section-title" data-i18n="mainCourse">Основное блюдо</div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="beefStroganoff">Бефстроганов с пюре</div>
+      <div class="kbju" data-kbju="472/18/25/44">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">472/18/25/44</span>
+      </div>
+      <div class="price" data-price="100000">370 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+      <select name="Бефстроганов с пюре" class="qty"></select>
+  </div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="buckwheatBeefVeg">Греча с овощами и говядиной</div>
+      <div class="kbju" data-kbju="1114/37/64/93">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">1114/37/64/93</span>
+      </div>
+      <div class="price" data-price="140000">300 <span data-i18n-gramm="gramm">гр.</span> 140 000₫</div>
+      <select name="Греча с овощами и говядиной" class="qty"></select>
+  </div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="julienneMashed">Жульен с пюре</div>
+      <div class="kbju" data-kbju="851/28/54/62">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">851/28/54/62</span>
+      </div>
+      <div class="kbju" data-kbju="851/28/54/62" data-i18n="kbju">К/Б/Ж/У: 851/28/54/62</div>
+      <div class="price" data-price="100000">340 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+      <select name="Жульен с пюре" class="qty"></select>
+  </div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="troutCutletsBeans">Котлеты из форели с фасолью</div>
+      <div class="kbju" data-kbju="1142/28/94/48">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">1142/28/94/48</span>
+      </div>
+      <div class="price" data-price="160000">220 <span data-i18n-gramm="gramm">гр.</span> 160 000₫</div>
+      <select name="Котлеты из форели с фасолью" class="qty"></select>
+  </div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="chickenCutletsVegetables">Котлеты куриные с овощами</div>
+      <div class="kbju" data-kbju="1114/54/109/206">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">1114/54/109/206</span>
+      </div>
+      <div class="price" data-price="100000">350 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+      <select name="Котлеты куриные с перцем" class="qty"></select>
+  </div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="shrimpZucchiniRice">Креветки с цукини и бурым рисом</div>
+      <div class="kbju" data-kbju="564/25/18/70">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">564/25/18/70</span>
+      </div>
+      <div class="price" data-price="160000">330 <span data-i18n-gramm="gramm">гр.</span> 160 000₫</div>
+      <select name="Креветки с цукини и рисом" class="qty"></select>
+  </div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="chickenBreastMashed">Куриная грудка с картофельным пюре</div>
+      <div class="kbju" data-kbju="363/44/3/35">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">363/44/3/35</span>
+      </div>
+      <div class="price" data-price="100000">330 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+      <select name="Куриная грудка с картофельным пюре" class="qty"></select>
+  </div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="pastaCarbonara">Паста карбонара</div>
+      <div class="kbju" data-kbju="836/31/49/60">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">932/38/55/60</span>
+      </div>
+      <div class="price" data-price="120000">300 <span data-i18n-gramm="gramm">гр.</span> 120 000₫</div>
+      <select name="Паста карбонара" class="qty"></select>
+  </div>
+
+
+ <div class="dish">
+      <div class="dish-name" data-i18n="pastaBeefTruffle">Паста с говядиной и трюфельным соусом</div>
+      <div class="kbju" data-kbju="790/30/45/59">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">790/30/45/59</span>
+      </div>
+      <div class="price" data-price="180000">310 <span data-i18n-gramm="gramm">гр.</span> 180 000₫</div>
+      <select name="Паста с говядиной и трюфельным соусом" class="qty"></select>
+ </div>
+
+  
+  <div class="dish">
+      <div class="dish-name" data-i18n="pastaShrimpPesto">Паста с креветками в сливочном соусе песто</div>
+      <div class="kbju" data-kbju="699/27/36/59">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">785/35/41/59</span>
+      </div>
+      <div class="kbju" data-kbju="699/27/36/59" data-i18n="kbju">К/Б/Ж/У: 699/27/36/59</div>
+      <div class="price" data-price="180000">330 <span data-i18n-gramm="gramm">гр.</span> 180 000₫</div>
+      <select name="Паста с креветками в сливочном соусе песто" class="qty"></select>
+  </div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="pastaChickenPesto">Паста с курицей в сливочном соусе песто</div>
+      <div class="kbju" data-kbju="757/39/36/59">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">757/39/36/59</span>
+      </div>
+      <div class="price" data-price="120000">300 <span data-i18n-gramm="gramm">гр.</span> 120 000₫</div>
+      <select name="Паста с курицей в сливочном соусе песто" class="qty"></select>
+  </div>
+
+
+  <!--
+  <div class="dish">
+      <div class="dish-name" data-i18n="pastaDuck">Паста с уткой</div>
+      <div class="kbju" data-kbju="1337/48/101/62">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">1337/48/101/62</span>
+      </div>
+      <div class="price" data-price="100000">310 <span data-i18n-gramm="gramm">гр.</span> 150 000₫</div>
+      <select name="Паста с уткой" class="qty"></select>
+  </div>
+
+  
+  <div class="dish">
+      <div class="dish-name" data-i18n="liverMashed">Печень в сметанном соусе  с пюре</div>
+      <div class="kbju" data-kbju="751/41/44/43">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">751/41/44/43</span>
+      </div>
+      <div class="price" data-price="100000">330 <span data-i18n-gramm="gramm">гр.</span> 100 000₫</div>
+      <select name="Печень в сметанном соусе" class="qty"></select>
+  </div>
+  -->
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="porkBBQMashed">Свинина в барбекю с пюре</div>
+      <div class="kbju" data-kbju="683/27/47/39">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">683/27/47/39</span>
+      </div>
+      <div class="kbju" data-kbju="683/27/47/39" data-i18n="kbju">К/Б/Ж/У: 683/27/47/39</div>
+      <div class="price" data-price="130000">340 <span data-i18n-gramm="gramm">гр.</span> 130 000₫</div>
+      <select name="Свинина в барбекю с пюре" class="qty"></select>
+  </div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="porkSweetSour">Свинина в кисло-сладком соусе с овощами</div>
+      <div class="kbju" data-kbju="1114/29/100/59">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">1114/29/100/59</span>
+      </div>
+      <div class="kbju" data-kbju="1114/29/100/59" data-i18n="kbju">К/Б/Ж/У: 1114/29/100/59</div>
+      <div class="price" data-price="130000">300 <span data-i18n-gramm="gramm">гр.</span> 130 000₫</div>
+      <select name="Свинина в кисло-сладком соусе с овощами" class="qty"></select>
+  </div>
+ <!-- 
+  <div class="dish">
+      <div class="dish-name" data-i18n="seaBassCauliflower">Сибас с пюре из цветной капусты</div>
+      <div class="kbju" data-kbju="635/29/46/28">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">635/29/46/28</span>
+      </div>
+      <div class="price" data-price="200000">320 <span data-i18n-gramm="gramm">гр.</span> 200 000₫</div>
+      <select name="Сибас с пюре из цветной капусты" class="qty"></select>
+  </div>
+  -->
+
+<div class="dish">
+      <div class="dish-name" data-i18n="seaBassMashed">Сибас с пюре</div>
+      <div class="kbju" data-kbju="455/35/23/36">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">455/35/23/36</span>
+      </div>
+      <div class="price" data-price="200000">320 <span data-i18n-gramm="gramm">гр.</span> 200 000₫</div>
+      <select name="Сибас с пюре" class="qty"></select>
+</div>
+
+
+
+
+
+
+
+  
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="troutSteakBroccoli">Стейк из форели с брокколи и соусом</div>
+      <div class="kbju" data-kbju="442/38/30/15">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">442/38/30/15</span>
+      </div>
+      <div class="price" data-price="200000">320 <span data-i18n-gramm="gramm">гр.</span> 200 000₫</div>
+      <select name="Стейк из форели с брокколи" class="qty"></select>
+  </div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="filetMignonSteak">Стейк филе миньон с пюре и соусом</div>
+      <div class="kbju" data-kbju="616/36/36/37">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">616/36/36/37</span>
+      </div>
+      <div class="price" data-price="200000">370 <span data-i18n-gramm="gramm">гр.</span> 200 000₫</div>
+      <select name="Стейк филе миньон с пюре" class="qty"></select>
+  </div>
+</div>
+
+<!-- ===== ГАРНИР / СОУС ===== -->     
+<div class="menu-section">
+  <div class="section-title" data-i18n="sideSauce">Гарнир / соус</div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="bulgur">Булгур</div>
+      <div class="kbju" data-kbju="148/0/382/19">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">148/0/382/19</span>
+      </div>
+      <div class="price" data-price="60000">200 <span data-i18n-gramm="gramm">гр.</span> 60 000₫</div>
+      <select name="Булгур" class="qty"></select>
+  </div>
+
+  <!--
+  <div class="dish">
+      <div class="dish-name" data-i18n="bakedEggplantSauce">Запеченный баклажан с соусом</div>
+      <div class="kbju" data-kbju="139/7/172/27">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">139/7/172/27</span>
+      </div>
+      <div class="price" data-price="80000">300 <span data-i18n-gramm="gramm">гр.</span> 80 000₫</div>
+      <select name="Запеченный баклажан с соусом" class="qty"></select>
+  </div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="bakedZucchiniSauce">Запеченный цукини с соусом</div>
+      <div class="kbju" data-kbju="87/5/154/14">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">87/5/154/14</span>
+      </div>
+      <div class="price" data-price="70000">300 <span data-i18n-gramm="gramm">гр.</span> 70 000₫</div>
+      <select name="Запеченный цукини с соусом" class="qty"></select>
+  </div>
+    
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="cauliflowerPuree">Пюре из цветной капусты</div>
+      <div class="kbju" data-kbju="94/0/175/16">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">94/0/175/16</span>
+      </div>
+      <div class="price" data-price="60000">200 <span data-i18n-gramm="gramm">гр.</span> 60 000₫</div>
+      <select name="Пюре из цветной капусты" class="qty"></select>
+  </div>
+-->
+  
+  <div class="dish">
+      <div class="dish-name" data-i18n="potatoPuree">Пюре картофельное</div>
+      <div class="kbju" data-kbju="286/5/14/36">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">286/5/14/36</span>
+      </div>
+      <div class="price" data-price="40000">200 <span data-i18n-gramm="gramm">гр.</span> 40 000₫</div>
+      <select name="Пюре картофельное" class="qty"></select>
+  </div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="yogurt">Йогурт</div>
+      <div class="kbju" data-kbju="31/2/2/2">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">31/2/2/2</span>
+      </div>
+      <div class="price" data-price="15000">50 <span data-i18n-gramm="gramm">гр.</span> 15 000₫</div>
+      <select name="Йогурт" class="qty"></select>
+  </div>
+
+  <div class="dish">
+      <div class="dish-name" data-i18n="garlicSauce">Соус чесночный</div>
+      <div class="kbju" data-kbju="160/1/16/2">
+      <span data-i18n="kbju">К/Б/Ж/У:</span>
+      <span class="kbju-values">160/1/16/2</span>
+      </div>
+      <div class="price" data-price="15000">50 <span data-i18n-gramm="gramm">гр.</span> 15 000₫</div>
+      <select name="Соус чесночный" class="qty"></select>
+  </div>
+</div>
+      
+      </div>
+
+      <div id="nutrition-summary" style="display: none;"></div>
+
+      <div class="input-block">
+        <textarea id="comment" name="comment" rows="3" data-i18n-placeholder="comment" placeholder="Комментарий"></textarea>
+      </div>
+
+      <button type="submit" data-i18n="submit">Отправить заявку</button>
+    </form>
+
+
+
+
+    
+  </div>
+
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <p id="popup-message"></p>
+      <button onclick="closePopup()" data-i18n="close">Закрыть</button>
+    </div>
+  </div>
+
+
+<div id="total-kbju-bar">
+  <div id="kbju-text">ИТОГО: 0₫ — К/Б/Ж/У: 0/0/0/0</div>
+</div>
+
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
+
+
+          
